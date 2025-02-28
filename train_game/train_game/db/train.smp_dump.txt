@@ -1,0 +1,14 @@
+
+State Machine - |train_block|train:inst|next_state
+Name next_state.ABout next_state.Bin next_state.Ain 
+next_state.ABout 0 0 0 
+next_state.Ain 1 0 1 
+next_state.Bin 1 1 0 
+
+State Machine - |train_block|train:inst|state
+Name state.Astop state.Bin state.Ain state.ABout state.Bstop 
+state.ABout 0 0 0 0 0 
+state.Ain 0 0 1 1 0 
+state.Bin 0 1 0 1 0 
+state.Astop 1 0 0 1 0 
+state.Bstop 0 0 0 1 1 

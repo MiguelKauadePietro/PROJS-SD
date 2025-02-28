@@ -1,0 +1,71 @@
+	module simple_cpu (
+    input clk,
+    input rst,
+    output reg mw,
+    output reg [15:0] acc,
+    output reg [7:0] mar
+);
+
+    // Internal registers
+    reg [7:0] pc;       // Program Counter
+    reg [15:0] ir;      // Instruction Register
+    reg [15:0] mdr;     // Memory Data Register
+
+    // State definitions
+    parameter RST_PC = 0, FETCH = 1, DECODE = 2, EXEC_ADD = 3, EXEC_STORE = 4;
+
+    reg [2:0] state;
+
+    // Memory initialization using .mif file
+    reg [15:0] memory [0:255];
+    initial begin
+        $readmemh("program.mif", memory);
+    end
+
+    always @(posedge clk or posedge rst) begin
+        if (rst) begin
+            // Reset state
+            state <= RST_PC;
+            pc <= 8'h00;
+            acc <= 16'h0000;
+            mar <= 8'h00;
+            mdr <= 16'h0000;
+            ir <= 16'h0000;
+            mw <= 1'b0;
+        end else begin
+            case (state)
+                RST_PC: begin
+                    pc <= 8'h00;
+                    state <= FETCH;
+                end
+                FETCH: begin
+                    mar <= pc;
+                    mdr <= memory[mar];
+                    ir <= mdr;
+                    pc <= pc + 1;
+                    state <= DECODE;
+                end
+                DECODE: begin
+                    mar <= ir[7:0];
+                    mdr <= memory[mar];
+                    case (ir[15:8])
+                        8'h02: state <= EXEC_ADD;  // Example opcode for ADD
+                        8'h03: state <= EXEC_STORE; // Example opcode for STORE
+                        default: state <= FETCH;
+                    endcase
+                end
+                EXEC_ADD: begin
+                    acc <= acc + mdr;
+                    state <= FETCH;
+                end
+                EXEC_STORE: begin
+                    memory[mar] <= acc;
+                    mw <= 1'b1;
+                    state <= FETCH;
+                end
+                default: state <= FETCH;
+            endcase
+        end
+    end
+
+endmodule

@@ -1,0 +1,323 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2024  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 16 16 160 160)
+	(text "tex_sprite_with_line11" (rect 5 0 88 12)(font "Arial" ))
+	(text "inst" (rect 8 128 20 140)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "pclk" (rect 0 0 15 12)(font "Arial" ))
+		(text "pclk" (rect 21 27 36 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32)(line_width 1))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "rst" (rect 0 0 10 12)(font "Arial" ))
+		(text "rst" (rect 21 43 31 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48)(line_width 1))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "x[9..0]" (rect 0 0 24 12)(font "Arial" ))
+		(text "x[9..0]" (rect 21 59 45 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 3))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "y[9..0]" (rect 0 0 25 12)(font "Arial" ))
+		(text "y[9..0]" (rect 21 75 46 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80)(line_width 3))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "jump" (rect 0 0 18 12)(font "Arial" ))
+		(text "jump" (rect 21 91 39 103)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 1))
+	)
+	(port
+		(pt 144 32)
+		(output)
+		(text "vga" (rect 0 0 15 12)(font "Arial" ))
+		(text "vga" (rect 108 27 123 39)(font "Arial" ))
+		(line (pt 144 32)(pt 128 32)(line_width 1))
+	)
+	(parameter
+		"rexXBegin"
+		"40"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"rexXend"
+		"56"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"cactoYBegin"
+		"236"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"cactoYEnd"
+		"252"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"cacto2YBegin"
+		"236"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"cacto2YEnd"
+		"252"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"nuvemYBegin"
+		"196"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"nuvemYEnd"
+		"212"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"nuvem2YBegin"
+		"196"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"nuvem2YEnd"
+		"212"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"chaoXBegin"
+		"0"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"chaoXEnd"
+		"640"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"chaoYBegin"
+		"240"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"chaoYEnd"
+		"242"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"listra1YBegin"
+		"254"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"listra1YEnd"
+		"256"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"listra2YBegin"
+		"247"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"listra2YEnd"
+		"249"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"gXBegin"
+		"248"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"gXEnd"
+		"264"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"gYBegin"
+		"100"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"gYEnd"
+		"116"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"aXBegin"
+		"264"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"aXEnd"
+		"280"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"aYBegin"
+		"100"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"aYEnd"
+		"116"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"mXBegin"
+		"280"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"mXEnd"
+		"296"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"mYBegin"
+		"100"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"mYEnd"
+		"116"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"eXBegin"
+		"296"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"eXEnd"
+		"312"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"eYBegin"
+		"100"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"eYEnd"
+		"116"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"oXBegin"
+		"328"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"oXEnd"
+		"344"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"oYBegin"
+		"100"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"oYEnd"
+		"116"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"vXBegin"
+		"344"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"vXEnd"
+		"360"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"vYBegin"
+		"100"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"vYEnd"
+		"116"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"e2XBegin"
+		"360"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"e2XEnd"
+		"376"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"e2YBegin"
+		"100"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"e2YEnd"
+		"116"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"rXBegin"
+		"376"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"rXEnd"
+		"392"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"rYBegin"
+		"100"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"rYEnd"
+		"116"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(drawing
+		(rectangle (rect 16 16 128 128)(line_width 1))
+	)
+	(annotation_block (parameter)(rect 160 -64 260 16))
+)

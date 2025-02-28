@@ -1,0 +1,2 @@
+Info (10281): Verilog HDL Declaration information at button.v(8): object "game_over" differs only in case from object "GAME_OVER" in the same scope File: C:/Users/Usuario/Desktop/rex_game/button.v Line: 8
+Warning (10268): Verilog HDL information at trex_sprite_with_line11.v(305): always construct contains both blocking and non-blocking assignments File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 305

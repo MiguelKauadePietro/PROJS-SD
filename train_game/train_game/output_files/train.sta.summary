@@ -1,0 +1,165 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'inst1|video_PLL_inst|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : -4.980
+TNS   : -9.820
+
+Type  : Slow 1100mV 85C Model Setup 'CLOCK_50'
+Slack : -4.722
+TNS   : -4.722
+
+Type  : Slow 1100mV 85C Model Setup 'counter:inst4|lpm_counter:LPM_COUNTER_component|cntr_hjh:auto_generated|counter_reg_bit[17]'
+Slack : -4.523
+TNS   : -250.704
+
+Type  : Slow 1100mV 85C Model Hold 'inst1|video_PLL_inst|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : -0.077
+TNS   : -0.108
+
+Type  : Slow 1100mV 85C Model Hold 'CLOCK_50'
+Slack : 0.379
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'counter:inst4|lpm_counter:LPM_COUNTER_component|cntr_hjh:auto_generated|counter_reg_bit[17]'
+Slack : 0.796
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'counter:inst4|lpm_counter:LPM_COUNTER_component|cntr_hjh:auto_generated|counter_reg_bit[17]'
+Slack : -0.394
+TNS   : -38.900
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'inst1|video_PLL_inst|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
+Slack : 1.666
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.038
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'inst1|video_PLL_inst|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 19.310
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'inst1|video_PLL_inst|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : -4.934
+TNS   : -9.602
+
+Type  : Slow 1100mV 0C Model Setup 'CLOCK_50'
+Slack : -4.614
+TNS   : -4.614
+
+Type  : Slow 1100mV 0C Model Setup 'counter:inst4|lpm_counter:LPM_COUNTER_component|cntr_hjh:auto_generated|counter_reg_bit[17]'
+Slack : -4.446
+TNS   : -246.748
+
+Type  : Slow 1100mV 0C Model Hold 'inst1|video_PLL_inst|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : -0.162
+TNS   : -0.277
+
+Type  : Slow 1100mV 0C Model Hold 'CLOCK_50'
+Slack : 0.377
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'counter:inst4|lpm_counter:LPM_COUNTER_component|cntr_hjh:auto_generated|counter_reg_bit[17]'
+Slack : 0.780
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'counter:inst4|lpm_counter:LPM_COUNTER_component|cntr_hjh:auto_generated|counter_reg_bit[17]'
+Slack : -0.394
+TNS   : -38.461
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'inst1|video_PLL_inst|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
+Slack : 1.666
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.027
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'inst1|video_PLL_inst|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 19.262
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'CLOCK_50'
+Slack : -3.532
+TNS   : -3.532
+
+Type  : Fast 1100mV 85C Model Setup 'inst1|video_PLL_inst|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : -2.711
+TNS   : -5.377
+
+Type  : Fast 1100mV 85C Model Setup 'counter:inst4|lpm_counter:LPM_COUNTER_component|cntr_hjh:auto_generated|counter_reg_bit[17]'
+Slack : -2.365
+TNS   : -127.402
+
+Type  : Fast 1100mV 85C Model Hold 'inst1|video_PLL_inst|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : -0.094
+TNS   : -0.131
+
+Type  : Fast 1100mV 85C Model Hold 'CLOCK_50'
+Slack : 0.198
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'counter:inst4|lpm_counter:LPM_COUNTER_component|cntr_hjh:auto_generated|counter_reg_bit[17]'
+Slack : 0.401
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'counter:inst4|lpm_counter:LPM_COUNTER_component|cntr_hjh:auto_generated|counter_reg_bit[17]'
+Slack : -0.055
+TNS   : -0.678
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'inst1|video_PLL_inst|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
+Slack : 1.666
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.047
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'inst1|video_PLL_inst|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 19.557
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'CLOCK_50'
+Slack : -3.007
+TNS   : -3.007
+
+Type  : Fast 1100mV 0C Model Setup 'inst1|video_PLL_inst|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : -2.291
+TNS   : -4.560
+
+Type  : Fast 1100mV 0C Model Setup 'counter:inst4|lpm_counter:LPM_COUNTER_component|cntr_hjh:auto_generated|counter_reg_bit[17]'
+Slack : -2.097
+TNS   : -113.569
+
+Type  : Fast 1100mV 0C Model Hold 'inst1|video_PLL_inst|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : -0.242
+TNS   : -0.438
+
+Type  : Fast 1100mV 0C Model Hold 'CLOCK_50'
+Slack : 0.189
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'counter:inst4|lpm_counter:LPM_COUNTER_component|cntr_hjh:auto_generated|counter_reg_bit[17]'
+Slack : 0.368
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'counter:inst4|lpm_counter:LPM_COUNTER_component|cntr_hjh:auto_generated|counter_reg_bit[17]'
+Slack : -0.017
+TNS   : -0.031
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'inst1|video_PLL_inst|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
+Slack : 1.666
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.051
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'inst1|video_PLL_inst|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 19.546
+TNS   : 0.000
+
+------------------------------------------------------------

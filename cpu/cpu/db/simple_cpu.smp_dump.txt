@@ -1,0 +1,8 @@
+
+State Machine - |simple_cpu|state
+Name state.EXEC_ADD state.DECODE state.FETCH state.RST_PC state.EXEC_STORE 
+state.RST_PC 0 0 0 0 0 
+state.FETCH 0 0 1 1 0 
+state.DECODE 0 1 0 1 0 
+state.EXEC_ADD 1 0 0 1 0 
+state.EXEC_STORE 0 0 0 1 1 

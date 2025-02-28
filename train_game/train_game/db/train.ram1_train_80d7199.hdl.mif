@@ -1,0 +1,19 @@
+-- begin_signature
+-- train
+-- end_signature
+WIDTH=5;
+DEPTH=8;
+
+ADDRESS_RADIX=UNS;
+DATA_RADIX=BIN;
+
+CONTENT BEGIN
+	7 :	01000;
+	6 :	01101;
+	5 :	10010;
+	4 :	10001;
+	3 :	10000;
+	2 :	01011;
+	1 :	00110;
+	0 :	00111;
+END;

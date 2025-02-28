@@ -1,0 +1,594 @@
+module vga_display (
+	input pclk, reset,
+	input [9:0]l_counter,
+	input [9:0]c_counter,
+	input position,
+	output reg video_out);
+	
+	parameter REX_X_INICIO = 40, REX_X_FINAL = 56;	
+	reg [9:0] REX_Y_INICIO = 236, REX_Y_FINAL = 252;
+	reg [9:0] CACTO_X_INICIO = 681, CACTO_X_FINAL = 697;
+	parameter CACTO_Y_INICIO = 236, CACTO_Y_FINAL = 252;
+	reg [9:0] CACTO2_X_INICIO = 897, CACTO2_X_FINAL = 913;
+	parameter CACTO2_Y_INICIO = 236, CACTO2_Y_FINAL = 252;
+	reg [9:0] NUVEM_X_INICIO = 640, NUVEM_X_FINAL = 656;
+	parameter NUVEM_Y_INICIO = 196, NUVEM_Y_FINAL = 212;
+	reg [9:0] NUVEM2_X_INICIO = 696, NUVEM2_X_FINAL = 712;
+	parameter NUVEM2_Y_INICIO = 196, NUVEM2_Y_FINAL = 212;
+	parameter CHAO_X_INICIO = 0, CHAO_X_FINAL = 640, CHAO_Y_INICIO = 240, CHAO_Y_FINAL = 242;
+	parameter DETALHE1_Y_INICIO = 254, DETALHE1_Y_FINAL = 256;
+	reg [9:0] DETALHE1_X_INICIO = 640, DETALHE1_X_FINAL = 720;
+	parameter DETALHE2_Y_INICIO = 247, DETALHE2_Y_FINAL = 249;
+	reg [9:0] DETALHE2_X_INICIO = 760, DETALHE2_X_FINAL = 840;
+	parameter LETRAG_X_INICIO = 248, LETRAG_X_FINAL = 264;
+	parameter LETRAG_Y_INICIO = 100, LETRAG_Y_FINAL = 116;
+	parameter LETRAA_X_INICIO = 264, LETRAA_X_FINAL = 280;
+	parameter LETRAA_Y_INICIO = 100, LETRAA_Y_FINAL = 116;
+	parameter LETRAM_X_INICIO = 280, LETRAM_X_FINAL = 296;
+	parameter LETRAM_Y_INICIO = 100, LETRAM_Y_FINAL = 116;
+	parameter LETRAE_X_INICIO = 296, LETRAE_X_FINAL = 312;
+	parameter LETRAE_Y_INICIO = 100, LETRAE_Y_FINAL = 116;
+	parameter LETRAO_X_INICIO = 328, LETRAO_X_FINAL = 344;
+	parameter LETRAO_Y_INICIO = 100, LETRAO_Y_FINAL = 116;
+	parameter LETRAV_X_INICIO = 344, LETRAV_X_FINAL = 360;
+	parameter LETRAV_Y_INICIO = 100, LETRAV_Y_FINAL = 116;
+	parameter LETRAE2_X_INICIO = 360, LETRAE2_X_FINAL = 376;
+	parameter LETRAE2_Y_INICIO = 100, LETRAE2_Y_FINAL = 116;
+	parameter LETRAR_X_INICIO = 376, LETRAR_X_FINAL = 392;
+	parameter LETRAR_Y_INICIO = 100, LETRAR_Y_FINAL = 116;
+	
+	reg [15:0] Trex [15:0];
+	reg [15:0] Cacto [15:0];
+	reg [15:0] Nuvem [15:0];
+	
+	reg [15:0] Zero [15:0];
+	reg [15:0] Um [15:0];
+	reg [15:0] Dois [15:0];
+	reg [15:0] Tres [15:0];
+	reg [15:0] Quatro [15:0];
+	reg [15:0] Cinco [15:0];
+	reg [15:0] Seis [15:0];
+	reg [15:0] Sete [15:0];
+	reg [15:0] Oito [15:0];
+	reg [15:0] Nove [15:0];
+	
+	reg [15:0] LetraG [15:0];
+	reg [15:0] LetraA [15:0];
+	reg [15:0] LetraM [15:0];
+	reg [15:0] LetraE [15:0];
+	reg [15:0] LetraO [15:0];
+	reg [15:0] LetraV [15:0];
+	reg [15:0] LetraR [15:0];
+	
+	initial begin
+	
+	Trex[15] = 16'b0011111100000000;
+	Trex[14] = 16'b0111111110000000;
+	Trex[13] = 16'b0111111110000000;
+	Trex[12] = 16'b0110111110000000;
+	Trex[11] = 16'b0111111110000000;
+	Trex[10] = 16'b0111111110011000;
+	Trex[9]  = 16'b0111111110010000;
+	Trex[8]  = 16'b0111111100111101;
+	Trex[7]  = 16'b0011111111111111;
+	Trex[6]  = 16'b0000001111111000;
+	Trex[5]  = 16'b0000001111110000;
+	Trex[4]  = 16'b0000000111110001;
+	Trex[3]  = 16'b0000000011111111;
+	Trex[2]  = 16'b0000000001111100;
+	Trex[1]  = 16'b0000000111111000;
+	Trex[0]  = 16'b0000001111110000;
+
+	Cacto[15] = 16'b0000000000000000;
+	Cacto[14] = 16'b0000000111000000;
+	Cacto[13] = 16'b0000001111100000;
+	Cacto[12] = 16'b0000000011100000;
+	Cacto[11] = 16'b0000000001110000;
+	Cacto[10] = 16'b0000000001110000;
+	Cacto[9]  = 16'b0001111111111111;
+	Cacto[8]  = 16'b0000111111111111;
+	Cacto[7]  = 16'b0000011111111111;
+	Cacto[6]  = 16'b0000000001110000;
+	Cacto[5]  = 16'b0000000001110000;
+	Cacto[4]  = 16'b0000001111100000;
+	Cacto[3]  = 16'b0000000111100000;
+	Cacto[2]  = 16'b0000000011000000;
+	Cacto[1]  = 16'b0000000000000000;
+	Cacto[0]  = 16'b0000000000000000;
+
+	Nuvem[15] = 16'b0000000000000000;
+	Nuvem[14] = 16'b0000000000000000;
+	Nuvem[13] = 16'b0000000111100000;
+	Nuvem[12] = 16'b00100001000010000;
+	Nuvem[11] = 16'b0000010000001000;
+	Nuvem[10] = 16'b0000100000000100;
+	Nuvem[9]  = 16'b0010000000000010;
+	Nuvem[8]  = 16'b0010000000000010;
+	Nuvem[7]  = 16'b0010000000000010;
+	Nuvem[6]  = 16'b0010100000000010;
+	Nuvem[5]  = 16'b0010000000000010;
+	Nuvem[4]  = 16'b001000000000010;
+	Nuvem[3]  = 16'b0000100000000100;
+	Nuvem[2]  = 16'b0000010000010000;
+	Nuvem[1]  = 16'b0000001111100000;
+	Nuvem[0]  = 16'b0000000000000000;
+	
+	Zero[15] = 16'b0011111111100000;
+	Zero[14] = 16'b0111111111110000;
+	Zero[13] = 16'b1111000001111000;
+	Zero[12] = 16'b1110000000111000;
+	Zero[11] = 16'b1110000000111000;
+	Zero[10] = 16'b1110000000111000;
+	Zero[9]  = 16'b1110000000111000;
+	Zero[8]  = 16'b1110000000111000;
+	Zero[7]  = 16'b1110000000111000;
+	Zero[6]  = 16'b1110000000111000;
+	Zero[5]  = 16'b1111000001111000;
+	Zero[4]  = 16'b0111111111110000;
+	Zero[3]  = 16'b0011111111100000;
+	Zero[2]  = 16'b0000000000000000;
+	Zero[1]  = 16'b0000000000000000;
+	Zero[0]  = 16'b0000000000000000;
+
+	Um[15] = 16'b0000001110000000;
+	Um[14] = 16'b0000011110000000;
+	Um[13] = 16'b0000111110000000;
+	Um[12] = 16'b0001111110000000;
+	Um[11] = 16'b0011111110000000;
+	Um[10] = 16'b0111011110000000;
+	Um[9]  = 16'b0000011110000000;
+	Um[8]  = 16'b0000011110000000;
+	Um[7]  = 16'b0000011110000000;
+	Um[6]  = 16'b0000011110000000;
+	Um[5]  = 16'b0000011110000000;
+	Um[4]  = 16'b0111111111111000;
+	Um[3]  = 16'b0111111111111000;
+	Um[2]  = 16'b0000000000000000;
+	Um[1]  = 16'b0000000000000000;
+	Um[0]  = 16'b0000000000000000;
+
+	Dois[15] = 16'b0011111111100000;
+	Dois[14] = 16'b0111111111110000;
+	Dois[13] = 16'b1110000001111000;
+	Dois[12] = 16'b0000000000111000;
+	Dois[11] = 16'b0000000001110000;
+	Dois[10] = 16'b0000000011100000;
+	Dois[9]  = 16'b0000000111000000;
+	Dois[8]  = 16'b0000001110000000;
+	Dois[7]  = 16'b0000011100000000;
+	Dois[6]  = 16'b0000111000000000;
+	Dois[5]  = 16'b0001110000000000;
+	Dois[4]  = 16'b0111111111111000;
+	Dois[3]  = 16'b1111111111111000;
+	Dois[2]  = 16'b0000000000000000;
+	Dois[1]  = 16'b0000000000000000;
+	Dois[0]  = 16'b0000000000000000;
+
+	Tres[15] = 16'b0011111111100000;
+	Tres[14] = 16'b0111111111110000;
+	Tres[13] = 16'b1110000001111000;
+	Tres[12] = 16'b0000000000111000;
+	Tres[11] = 16'b0000000000111000;
+	Tres[10] = 16'b0000000011110000;
+	Tres[9]  = 16'b0000001111100000;
+	Tres[8]  = 16'b0000001111100000;
+	Tres[7]  = 16'b0000000001111000;
+	Tres[6]  = 16'b0000000000111000;
+	Tres[5]  = 16'b1110000001111000;
+	Tres[4]  = 16'b0111111111110000;
+	Tres[3]  = 16'b0011111111100000;
+	Tres[2]  = 16'b0000000000000000;
+	Tres[1]  = 16'b0000000000000000;
+	Tres[0]  = 16'b0000000000000000;
+
+	Quatro[15] = 16'b0000000111100000;
+	Quatro[14] = 16'b0000001111100000;
+	Quatro[13] = 16'b0000011111100000;
+	Quatro[12] = 16'b0000111011100000;
+	Quatro[11] = 16'b0001110011100000;
+	Quatro[10] = 16'b0011100011100000;
+	Quatro[9]  = 16'b0111000011100000;
+	Quatro[8]  = 16'b1111111111111100;
+	Quatro[7]  = 16'b1111111111111100;
+	Quatro[6]  = 16'b0000000011100000;
+	Quatro[5]  = 16'b0000000011100000;
+	Quatro[4]  = 16'b0000000011100000;
+	Quatro[3]  = 16'b0000000011100000;
+	Quatro[2]  = 16'b0000000000000000;
+	Quatro[1]  = 16'b0000000000000000;
+	Quatro[0]  = 16'b0000000000000000;
+	
+	Cinco[15] = 16'b1111111111111000;
+	Cinco[14] = 16'b1111111111111000;
+	Cinco[13] = 16'b1110000000000000;
+	Cinco[12] = 16'b1110000000000000;
+	Cinco[11] = 16'b1111111111100000;
+	Cinco[10] = 16'b1111111111110000;
+	Cinco[9]  = 16'b0000000001111000;
+	Cinco[8]  = 16'b0000000000111000;
+	Cinco[7]  = 16'b0000000000111000;
+	Cinco[6]  = 16'b0000000001111000;
+	Cinco[5]  = 16'b1111111111110000;
+	Cinco[4]  = 16'b0111111111100000;
+	Cinco[3]  = 16'b0000000000000000;
+	Cinco[2]  = 16'b0000000000000000;
+	Cinco[1]  = 16'b0000000000000000;
+	Cinco[0]  = 16'b0000000000000000;
+
+	Seis[15] = 16'b0011111111100000;
+   Seis[14] = 16'b0111111111110000;
+   Seis[13] = 16'b1111000001111000;
+   Seis[12] = 16'b1110000000111000;
+   Seis[11] = 16'b1110000000000000;
+   Seis[10] = 16'b1110000000000000;
+   Seis[9]  = 16'b1110111111100000;
+   Seis[8]  = 16'b1111111111110000;
+   Seis[7]  = 16'b1111000001111000;
+   Seis[6]  = 16'b1110000000111000;
+   Seis[5]  = 16'b1110000000111000;
+   Seis[4]  = 16'b0111000001111000;
+   Seis[3]  = 16'b0111111111110000;
+   Seis[2]  = 16'b0011111111100000;
+   Seis[1]  = 16'b0000000000000000;
+   Seis[0]  = 16'b0000000000000000;
+
+	Sete[15] = 16'b1111111111111000;
+   Sete[14] = 16'b1111111111111000;
+   Sete[13] = 16'b0000000001111000;
+   Sete[12] = 16'b0000000011111000;
+   Sete[11] = 16'b0000000111110000;
+   Sete[10] = 16'b0000001111100000;
+   Sete[9]  = 16'b0000011111000000;
+   Sete[8]  = 16'b0000111110000000;
+   Sete[7]  = 16'b0001111100000000;
+   Sete[6]  = 16'b0011111000000000;
+   Sete[5]  = 16'b0111110000000000;
+   Sete[4]  = 16'b0111110000000000;
+   Sete[3]  = 16'b0111100000000000;
+   Sete[2]  = 16'b0000000000000000;
+   Sete[1]  = 16'b0000000000000000;
+   Sete[0]  = 16'b0000000000000000;
+
+	Oito[15] = 16'b0011111111000000;
+   Oito[14] = 16'b0111111111100000;
+   Oito[13] = 16'b1111000001111000;
+   Oito[12] = 16'b1111000001111000;
+   Oito[11] = 16'b1111000001111000;
+   Oito[10] = 16'b1111000001111000;
+   Oito[9]  = 16'b1111111111111000;
+   Oito[8]  = 16'b1111111111111000;
+   Oito[7]  = 16'b1111000001111000;
+   Oito[6]  = 16'b1111000001111000;
+   Oito[5]  = 16'b1111000001111000;
+   Oito[4]  = 16'b0111111111100000;
+   Oito[3]  = 16'b0011111111000000;
+   Oito[2]  = 16'b0000000000000000;
+   Oito[1]  = 16'b0000000000000000;
+   Oito[0]  = 16'b0000000000000000;
+	
+	Nove[15] = 16'b0001111110000000;
+   Nove[14] = 16'b0011111111000000;
+   Nove[13] = 16'b0111111111100000;
+   Nove[12] = 16'b0111100011100000;
+   Nove[11] = 16'b0111100011100000;
+   Nove[10] = 16'b0111100011100000;
+   Nove[9]  = 16'b0111100011100000;
+   Nove[8]  = 16'b0111111111100000;
+   Nove[7]  = 16'b0011111111100000;
+   Nove[6]  = 16'b0000000011100000;
+   Nove[5]  = 16'b0000000011100000;
+   Nove[4]  = 16'b0000000011100000;
+   Nove[3]  = 16'b0111000011100000;
+   Nove[2]  = 16'b0111111111100000;
+   Nove[1]  = 16'b0011111111000000;
+   Nove[0]  = 16'b0001111110000000;
+
+	LetraG[15] = 16'b0000111111110000;
+   LetraG[14] = 16'b0001111111111000;
+   LetraG[13] = 16'b0011110000111100;
+   LetraG[12] = 16'b0111100000011100;
+   LetraG[11] = 16'b0111000000011100;
+   LetraG[10] = 16'b0111000000000000;
+   LetraG[9]  = 16'b0111000011111100;
+   LetraG[8]  = 16'b0111000011111100;
+   LetraG[7]  = 16'b0111000000011100;
+   LetraG[6]  = 16'b0111100000011100;
+   LetraG[5]  = 16'b0011110000111100;
+   LetraG[4]  = 16'b0001111111111000;
+   LetraG[3]  = 16'b0000111111110000;
+   LetraG[2]  = 16'b0000000000000000;
+   LetraG[1]  = 16'b0000000000000000;
+   LetraG[0]  = 16'b0000000000000000;
+
+	LetraA[15] = 16'b0000011111000000;
+   LetraA[14] = 16'b0000111111100000;
+   LetraA[13] = 16'b0000110011100000;
+   LetraA[12] = 16'b0001110011110000;
+   LetraA[11] = 16'b0001110011110000;
+   LetraA[10] = 16'b0011100000111000;
+   LetraA[9]  = 16'b0011100000111000;
+   LetraA[8]  = 16'b0111111111111100;
+   LetraA[7]  = 16'b0111111111111100;
+   LetraA[6]  = 16'b1110000000001110;
+   LetraA[5]  = 16'b1110000000001110;
+   LetraA[4]  = 16'b1110000000001110;
+   LetraA[3]  = 16'b1110000000001110;
+   LetraA[2]  = 16'b0000000000000000;
+   LetraA[1]  = 16'b0000000000000000;
+   LetraA[0]  = 16'b0000000000000000;
+
+	LetraM[15] = 16'b1110000000001110;
+   LetraM[14] = 16'b1111000000011110;
+   LetraM[13] = 16'b1111100000111110;
+   LetraM[12] = 16'b1111100000111110;
+   LetraM[11] = 16'b1110110001101110;
+   LetraM[10] = 16'b1110011011001110;
+   LetraM[9]  = 16'b1110011011001110;
+   LetraM[8]  = 16'b1110001110001110;
+   LetraM[7]  = 16'b1110000000001110;
+   LetraM[6]  = 16'b1110000000001110;
+   LetraM[5]  = 16'b1110000000001110;
+   LetraM[4]  = 16'b1110000000001110;
+   LetraM[3]  = 16'b1110000000001110;
+   LetraM[2]  = 16'b0000000000000000;
+   LetraM[1]  = 16'b0000000000000000;
+   LetraM[0]  = 16'b0000000000000000;
+
+	LetraE[15] = 16'b1111111111111100;
+   LetraE[14] = 16'b1111111111111100;
+   LetraE[13] = 16'b1110000000000000;
+   LetraE[12] = 16'b1110000000000000;
+   LetraE[11] = 16'b1110000000000000;
+   LetraE[10] = 16'b1111111111111000;
+   LetraE[9]  = 16'b1111111111111000;
+   LetraE[8]  = 16'b1110000000000000;
+   LetraE[7]  = 16'b1110000000000000;
+   LetraE[6]  = 16'b1110000000000000;
+   LetraE[5]  = 16'b1110000000000000;
+   LetraE[4]  = 16'b1111111111111100;
+   LetraE[3]  = 16'b1111111111111100;
+   LetraE[2]  = 16'b0000000000000000;
+   LetraE[1]  = 16'b0000000000000000;
+   LetraE[0]  = 16'b0000000000000000;
+
+	LetraO[15] = 16'b0001111111100000;
+   LetraO[14] = 16'b0011111111110000;
+   LetraO[13] = 16'b0111100001111000;
+   LetraO[12] = 16'b0111000000111000;
+   LetraO[11] = 16'b1110000000011100;
+   LetraO[10] = 16'b1110000000011100;
+   LetraO[9]  = 16'b1110000000011100;
+   LetraO[8]  = 16'b1110000000011100;
+   LetraO[7]  = 16'b1110000000011100;
+   LetraO[6]  = 16'b0111000000111000;
+   LetraO[5]  = 16'b0111100001111000;
+   LetraO[4]  = 16'b0011111111110000;
+   LetraO[3]  = 16'b0001111111100000;
+   LetraO[2]  = 16'b0000000000000000;
+   LetraO[1]  = 16'b0000000000000000;
+	LetraO[0]  = 16'b0000000000000000;
+
+	LetraV[15] = 16'b1110000000011100;
+   LetraV[14] = 16'b1110000000011100;
+   LetraV[13] = 16'b1110000000011100;
+   LetraV[12] = 16'b1110000000011100;
+   LetraV[11] = 16'b0111000000111000;
+   LetraV[10] = 16'b0111000000111000;
+   LetraV[9]  = 16'b0111000000111000;
+   LetraV[8]  = 16'b0011100001110000;
+   LetraV[7]  = 16'b0011100001110000;
+   LetraV[6]  = 16'b0011100001110000;
+   LetraV[5]  = 16'b0001110011100000;
+   LetraV[4]  = 16'b0000011110000000;
+   LetraV[3]  = 16'b0000001100000000;
+   LetraV[2]  = 16'b0000000000000000;
+   LetraV[1]  = 16'b0000000000000000;
+	LetraV[0]  = 16'b0000000000000000;
+	
+	LetraR[15] = 16'b1111111111110000;
+   LetraR[14] = 16'b1111111111111000;
+   LetraR[13] = 16'b1110000001111100;
+   LetraR[12] = 16'b1110000000111100;
+   LetraR[11] = 16'b1110000000111100;
+   LetraR[10] = 16'b1110000001111000;
+   LetraR[9]  = 16'b1111111111110000;
+   LetraR[8]  = 16'b1111111111100000;
+   LetraR[7]  = 16'b1110000011110000;
+   LetraR[6]  = 16'b1110000001110000;
+   LetraR[5]  = 16'b1110000001111000;
+   LetraR[4]  = 16'b1110000000111100;
+   LetraR[3]  = 16'b1110000000111100;
+   LetraR[2]  = 16'b0000000000000000;
+   LetraR[1]  = 16'b0000000000000000;
+   LetraR[0]  = 16'b0000000000000000;
+	
+	end
+	
+	reg [19:0] contador_de_pontos = 'd0;
+	reg [19:0] contador_deslocamento = 'd125000;
+	reg [19:0] contador_velocidade = 'd100;
+	reg [19:0] guarda_velocidade = 'd125000;
+	
+	reg Game_over;
+	
+	always @(posedge pclk) begin
+		video_out = 0;
+		
+		if(c_counter >= CHAO_X_INICIO && c_counter < CHAO_X_FINAL && l_counter >= CHAO_Y_INICIO && l_counter < CHAO_Y_FINAL) begin
+			video_out = 1;
+		end
+		
+		if(c_counter >= DETALHE1_X_INICIO && c_counter < DETALHE1_X_FINAL && l_counter >= DETALHE1_Y_INICIO && l_counter < DETALHE1_Y_FINAL) begin
+			video_out = 1;
+		end
+		
+		if(c_counter >= DETALHE2_X_INICIO && c_counter < DETALHE2_X_FINAL && l_counter >= DETALHE2_Y_INICIO && l_counter < DETALHE2_Y_FINAL) begin
+			video_out = 1;	
+		end
+		
+		if(c_counter >= CACTO_X_INICIO && c_counter < CACTO_X_FINAL && l_counter >= CACTO_Y_INICIO && l_counter < CACTO_Y_FINAL) begin
+			video_out = Cacto[15 - (c_counter - CACTO_X_INICIO)][l_counter - CACTO_Y_INICIO];
+		end
+		
+		if(c_counter >= CACTO2_X_INICIO && c_counter < CACTO2_X_FINAL && l_counter >= CACTO2_Y_INICIO && l_counter < CACTO2_Y_FINAL) begin
+			video_out = Cacto[15 - (c_counter - CACTO2_X_INICIO)][l_counter - CACTO2_Y_INICIO];
+		end
+		
+		if(c_counter >= NUVEM_X_INICIO && c_counter < NUVEM_X_FINAL && l_counter >= NUVEM_Y_INICIO && l_counter < NUVEM_Y_FINAL) begin
+			video_out = Nuvem[15 - (c_counter - NUVEM_X_INICIO)][l_counter - NUVEM_Y_INICIO];
+		end
+		
+		if(c_counter >= NUVEM2_X_INICIO && c_counter < NUVEM2_X_FINAL && l_counter >= NUVEM2_Y_INICIO && l_counter < NUVEM2_Y_FINAL) begin
+			video_out = Nuvem[15 - (c_counter - NUVEM2_X_INICIO)][l_counter - NUVEM2_Y_INICIO];
+		end
+		
+		if(c_counter >= REX_X_INICIO && c_counter < REX_X_FINAL && l_counter >= REX_Y_INICIO && l_counter < REX_Y_FINAL) begin
+			video_out = Trex[15 - (c_counter - REX_X_INICIO)][l_counter - REX_Y_INICIO];
+		end
+		
+		if(Game_over) begin
+			if(c_counter >= LETRAG_X_INICIO && c_counter < LETRAG_X_FINAL && l_counter >= LETRAG_Y_INICIO && l_counter < LETRAG_Y_FINAL) begin
+				video_out = LetraG[l_counter - LETRAG_Y_INICIO][c_counter - LETRAG_X_INICIO];
+			end
+			
+			if(c_counter >= LETRAA_X_INICIO && c_counter < LETRAA_X_FINAL && l_counter >= LETRAA_Y_INICIO && l_counter < LETRAA_Y_FINAL) begin
+				video_out = LetraA[l_counter - LETRAA_Y_INICIO][c_counter - LETRAA_X_INICIO];
+			end
+			
+			if(c_counter >= LETRAM_X_INICIO && c_counter < LETRAM_X_FINAL && l_counter >= LETRAM_Y_INICIO && l_counter < LETRAM_Y_FINAL) begin
+				video_out = LetraM[l_counter - LETRAM_Y_INICIO][c_counter - LETRAM_X_INICIO];
+			end
+			
+			if(c_counter >= LETRAE_X_INICIO && c_counter < LETRAE_X_FINAL && l_counter >= LETRAE_Y_INICIO && l_counter < LETRAE_Y_FINAL) begin
+				video_out = LetraE[l_counter - LETRAE_Y_INICIO][c_counter - LETRAE_X_INICIO];
+			end
+			
+			if(c_counter >= LETRAO_X_INICIO && c_counter < LETRAO_X_FINAL && l_counter >= LETRAO_Y_INICIO && l_counter < LETRAO_Y_FINAL) begin
+				video_out = LetraO[l_counter - LETRAO_Y_INICIO][c_counter - LETRAO_X_INICIO];
+			end
+			
+			if(c_counter >= LETRAV_X_INICIO && c_counter < LETRAV_X_FINAL && l_counter >= LETRAV_Y_INICIO && l_counter < LETRAV_Y_FINAL) begin
+				video_out = LetraV[l_counter - LETRAV_Y_INICIO][c_counter - LETRAV_X_INICIO];
+			end
+			
+			if(c_counter >= LETRAE2_X_INICIO && c_counter < LETRAE2_X_FINAL && l_counter >= LETRAE2_Y_INICIO && l_counter < LETRAE2_Y_FINAL) begin
+				video_out = LetraE[l_counter - LETRAE2_Y_INICIO][c_counter - LETRAE2_X_INICIO];
+			end
+			
+			if(c_counter >= LETRAR_X_INICIO && c_counter < LETRAR_X_FINAL && l_counter >= LETRAR_Y_INICIO && l_counter < LETRAR_Y_FINAL) begin
+				video_out = LetraR[l_counter - LETRAR_Y_INICIO][c_counter - LETRAR_X_INICIO];
+			end
+		end
+	end
+	
+	always @(posedge pclk) begin
+		if(position && REX_Y_FINAL > 227 && !Game_over) begin
+			REX_Y_INICIO <= REX_Y_INICIO - 25;
+			REX_Y_FINAL <= REX_Y_FINAL - 25;
+		end
+		else if(~position)begin
+			REX_Y_INICIO <= 236;
+			REX_Y_FINAL <= 252;
+		end
+	end
+	
+	always @(posedge pclk) begin
+		if(reset) begin
+			contador_deslocamento = 'd125000;
+			guarda_velocidade = 'd125000;
+			contador_velocidade = 'd100;
+			contador_de_pontos = 'd0;
+			Game_over = 0;
+			CACTO_X_INICIO = 681;
+			CACTO_X_FINAL = 697;
+			CACTO2_X_INICIO = 897;
+			CACTO2_X_FINAL = 913;
+			NUVEM_X_INICIO = 640;
+			NUVEM_X_FINAL = 656;
+			NUVEM2_X_INICIO = 696;
+			NUVEM2_X_FINAL = 712;
+			DETALHE1_X_INICIO = 640;
+			DETALHE1_X_FINAL = 720;
+			DETALHE2_X_INICIO = 760;
+			DETALHE2_X_FINAL = 840;
+		end 
+		else if(!Game_over) begin
+			if(contador_deslocamento > 0) begin
+				contador_deslocamento <= contador_deslocamento - 1;
+			end
+			else begin
+				if(CACTO_X_FINAL > 0) begin
+					CACTO_X_INICIO = CACTO_X_INICIO - 1;
+					CACTO_X_FINAL = CACTO_X_FINAL - 1;
+				end
+				else begin
+					CACTO_X_INICIO = 681;
+					CACTO_X_FINAL = 697;
+				end
+				
+				if(CACTO2_X_FINAL > 0) begin
+					CACTO2_X_INICIO = CACTO2_X_INICIO - 1;
+					CACTO2_X_FINAL = CACTO2_X_FINAL - 1;
+				end
+				else begin
+					CACTO2_X_INICIO = 897;
+					CACTO2_X_FINAL = 913;
+				end
+				
+				if(NUVEM_X_FINAL > 0) begin
+					NUVEM_X_INICIO = NUVEM_X_INICIO - 1;
+					NUVEM_X_FINAL = NUVEM_X_FINAL - 1;
+				end
+				else begin
+					NUVEM_X_INICIO = 640;
+					NUVEM_X_FINAL = 656;
+				end
+				
+				if(NUVEM2_X_FINAL > 0) begin
+					NUVEM2_X_INICIO = NUVEM2_X_INICIO - 1;
+					NUVEM2_X_FINAL = NUVEM2_X_FINAL - 1;
+				end
+				else begin
+					NUVEM2_X_INICIO = 696;
+					NUVEM2_X_FINAL = 712;
+				end
+				
+				if(DETALHE1_X_FINAL > 0) begin
+					DETALHE1_X_INICIO = DETALHE1_X_INICIO - 1;
+					DETALHE1_X_FINAL = DETALHE1_X_FINAL - 1;
+				end
+				else begin
+					DETALHE1_X_INICIO = 640;
+					DETALHE1_X_FINAL = 720;
+				end
+				
+				if(DETALHE2_X_INICIO > 0) begin
+					DETALHE2_X_INICIO = DETALHE2_X_INICIO - 1;
+					DETALHE2_X_FINAL = DETALHE2_X_FINAL - 1;
+				end
+				else begin
+					DETALHE2_X_INICIO = 760;
+					DETALHE2_X_FINAL = 840;
+				end
+				
+				contador_de_pontos = contador_de_pontos + 1;
+				contador_deslocamento = guarda_velocidade;
+				
+				if(contador_velocidade > 0) begin
+					contador_velocidade = contador_velocidade - 1;
+				end
+				else begin
+					if(guarda_velocidade > 62500) begin
+						guarda_velocidade = guarda_velocidade - 500;
+						contador_velocidade = 100;
+					end
+				end
+			end
+		end
+		
+		if(REX_X_FINAL == CACTO_X_INICIO && REX_Y_INICIO == CACTO_Y_INICIO || REX_X_FINAL == CACTO2_X_INICIO && REX_Y_INICIO == CACTO2_Y_INICIO || (CACTO_X_FINAL - REX_X_FINAL) <= 16 && (CACTO_X_FINAL - REX_X_FINAL) > 0 && REX_Y_FINAL == CACTO_Y_INICIO || (CACTO2_X_FINAL - REX_X_FINAL) <= 16 && (CACTO2_X_FINAL - REX_X_FINAL) > 0 && REX_Y_FINAL == CACTO2_Y_INICIO) begin
+			Game_over = 1;
+		end
+	end
+			
+endmodule

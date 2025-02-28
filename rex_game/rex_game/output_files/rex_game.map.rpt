@@ -1,0 +1,1809 @@
+Analysis & Synthesis report for rex_game
+Fri Feb 28 14:45:06 2025
+Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Inverted Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: VGA_SYNC:inst|video_PLL:video_PLL_inst|altpll:altpll_component
+ 13. Parameter Settings for User Entity Instance: tex_sprite_with_line11:inst1
+ 14. altpll Parameter Settings by Entity Instance
+ 15. Post-Synthesis Netlist Statistics for Top Partition
+ 16. Elapsed Time Per Partition
+ 17. Analysis & Synthesis Messages
+ 18. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2024  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++---------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Fri Feb 28 14:45:06 2025          ;
+; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
+; Revision Name                   ; rex_game                                       ;
+; Top-level Entity Name           ; rex_game                                       ;
+; Family                          ; Cyclone V                                      ;
+; Logic utilization (in ALMs)     ; N/A                                            ;
+; Total registers                 ; 248                                            ;
+; Total pins                      ; 9                                              ;
+; Total virtual pins              ; 0                                              ;
+; Total block memory bits         ; 0                                              ;
+; Total DSP Blocks                ; 0                                              ;
+; Total HSSI RX PCSs              ; 0                                              ;
+; Total HSSI PMA RX Deserializers ; 0                                              ;
+; Total HSSI TX PCSs              ; 0                                              ;
+; Total HSSI PMA TX Serializers   ; 0                                              ;
+; Total PLLs                      ; 1                                              ;
+; Total DLLs                      ; 0                                              ;
++---------------------------------+------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSXFC6D6F31C6     ;                    ;
+; Top-level entity name                                                           ; rex_game           ; rex_game           ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 8           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 8           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                          ;
++----------------------------------+-----------------+------------------------------------+-----------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                ; Library ;
++----------------------------------+-----------------+------------------------------------+-----------------------------------------------------------------------------+---------+
+; rex_game.bdf                     ; yes             ; User Block Diagram/Schematic File  ; C:/Users/Usuario/Desktop/rex_game/rex_game.bdf                              ;         ;
+; trex_sprite_with_line11.v        ; yes             ; User Verilog HDL File              ; C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v                 ;         ;
+; vga_sync.vhd                     ; yes             ; Auto-Found VHDL File               ; C:/Users/Usuario/Desktop/rex_game/vga_sync.vhd                              ;         ;
+; video_pll.vhd                    ; yes             ; Auto-Found Wizard-Generated File   ; C:/Users/Usuario/Desktop/rex_game/video_pll.vhd                             ;         ;
+; altpll.tdf                       ; yes             ; Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altpll.tdf        ;         ;
+; aglobal231.inc                   ; yes             ; Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/aglobal231.inc    ;         ;
+; stratix_pll.inc                  ; yes             ; Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/stratix_pll.inc   ;         ;
+; stratixii_pll.inc                ; yes             ; Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/stratixii_pll.inc ;         ;
+; cycloneii_pll.inc                ; yes             ; Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/cycloneii_pll.inc ;         ;
+; db/altpll_80u.tdf                ; yes             ; Auto-Generated Megafunction        ; C:/Users/Usuario/Desktop/rex_game/db/altpll_80u.tdf                         ;         ;
++----------------------------------+-----------------+------------------------------------+-----------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                                                                                   ;
++---------------------------------------------+-------------------------------------------------------------------------------------------------+
+; Resource                                    ; Usage                                                                                           ;
++---------------------------------------------+-------------------------------------------------------------------------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 455                                                                                             ;
+;                                             ;                                                                                                 ;
+; Combinational ALUT usage for logic          ; 762                                                                                             ;
+;     -- 7 input functions                    ; 1                                                                                               ;
+;     -- 6 input functions                    ; 144                                                                                             ;
+;     -- 5 input functions                    ; 95                                                                                              ;
+;     -- 4 input functions                    ; 128                                                                                             ;
+;     -- <=3 input functions                  ; 394                                                                                             ;
+;                                             ;                                                                                                 ;
+; Dedicated logic registers                   ; 248                                                                                             ;
+;                                             ;                                                                                                 ;
+; I/O pins                                    ; 9                                                                                               ;
+;                                             ;                                                                                                 ;
+; Total DSP Blocks                            ; 0                                                                                               ;
+;                                             ;                                                                                                 ;
+; Total PLLs                                  ; 1                                                                                               ;
+;     -- PLLs                                 ; 1                                                                                               ;
+;                                             ;                                                                                                 ;
+; Maximum fan-out node                        ; VGA_SYNC:inst|video_PLL:video_PLL_inst|altpll:altpll_component|altpll_80u:auto_generated|clk[0] ;
+; Maximum fan-out                             ; 250                                                                                             ;
+; Total fan-out                               ; 3536                                                                                            ;
+; Average fan-out                             ; 3.44                                                                                            ;
++---------------------------------------------+-------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                           ;
++-----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------+------------------------+--------------+
+; Compilation Hierarchy Node              ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                ; Entity Name            ; Library Name ;
++-----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------+------------------------+--------------+
+; |rex_game                               ; 762 (0)             ; 248 (0)                   ; 0                 ; 0          ; 9    ; 0            ; |rex_game                                                                                          ; rex_game               ; work         ;
+;    |VGA_SYNC:inst|                      ; 39 (39)             ; 48 (48)                   ; 0                 ; 0          ; 0    ; 0            ; |rex_game|VGA_SYNC:inst                                                                            ; VGA_SYNC               ; work         ;
+;       |video_PLL:video_PLL_inst|        ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |rex_game|VGA_SYNC:inst|video_PLL:video_PLL_inst                                                   ; video_PLL              ; work         ;
+;          |altpll:altpll_component|      ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |rex_game|VGA_SYNC:inst|video_PLL:video_PLL_inst|altpll:altpll_component                           ; altpll                 ; work         ;
+;             |altpll_80u:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |rex_game|VGA_SYNC:inst|video_PLL:video_PLL_inst|altpll:altpll_component|altpll_80u:auto_generated ; altpll_80u             ; work         ;
+;    |tex_sprite_with_line11:inst1|       ; 723 (723)           ; 200 (200)                 ; 0                 ; 0          ; 0    ; 0            ; |rex_game|tex_sprite_with_line11:inst1                                                             ; tex_sprite_with_line11 ; work         ;
++-----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------+------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                       ;
++-------------------------------------------------+----------------------------------------+
+; Register name                                   ; Reason for Removal                     ;
++-------------------------------------------------+----------------------------------------+
+; tex_sprite_with_line11:inst1|velocidadeReg[0,1] ; Stuck at GND due to stuck port data_in ;
+; VGA_SYNC:inst|pixel_row[9]                      ; Stuck at GND due to stuck port data_in ;
+; tex_sprite_with_line11:inst1|cacto~0            ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~1            ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~2            ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~3            ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~4            ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~5            ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~6            ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~7            ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~8            ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~9            ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~10           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~11           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~12           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~13           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~14           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~15           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~16           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~17           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~18           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~19           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~20           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~21           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~22           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~23           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~24           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~25           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~26           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~27           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~28           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~29           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~30           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~31           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~32           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~33           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~34           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~35           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~36           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~37           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~38           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~39           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~40           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~41           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~42           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~43           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~44           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~45           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~46           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~47           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~48           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~49           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~50           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~51           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~52           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~53           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~54           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~55           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~56           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~57           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~58           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~59           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~60           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~61           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~62           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~63           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~64           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~65           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~66           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~67           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~68           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~69           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~70           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~71           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~72           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~73           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~74           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~75           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~76           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~77           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~78           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~79           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~80           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~81           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~82           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~83           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~84           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~85           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~86           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~87           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~88           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~89           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~90           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~91           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~92           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~93           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~94           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~95           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~96           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~97           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~98           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~99           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~100          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~101          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~102          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~103          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~104          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~105          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~106          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~107          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~108          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~109          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~110          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~111          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~112          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~113          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~114          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~115          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~116          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~117          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~118          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~119          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~120          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~121          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~122          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~123          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~124          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~125          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~126          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~127          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~128          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~129          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~130          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~131          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~132          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~133          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~134          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~135          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~136          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~137          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~138          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~139          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~140          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~141          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~142          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~143          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~144          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~145          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~146          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~147          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~148          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~149          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~150          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~151          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~152          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~153          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~154          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~155          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~156          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~157          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~158          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~159          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~160          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~161          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~162          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~163          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~164          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~165          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~166          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~167          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~168          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~169          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~170          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~171          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~172          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~173          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~174          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~175          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~176          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~177          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~178          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~179          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~180          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~181          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~182          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~183          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~184          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~185          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~186          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~187          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~188          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~189          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~190          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~191          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~192          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~193          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~194          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~195          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~196          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~197          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~198          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~199          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~200          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~201          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~202          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~203          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~204          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~205          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~206          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~207          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~208          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~209          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~210          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~211          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~212          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~213          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~214          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~215          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~216          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~217          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~218          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~219          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~220          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~221          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~222          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~223          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~224          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~225          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~226          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~227          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~228          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~229          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~230          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~231          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~232          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~233          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~234          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~235          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~236          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~237          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~238          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~239          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~240          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~241          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~242          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~243          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~244          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~245          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~246          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~247          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~248          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~249          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~250          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~251          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~252          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~253          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~254          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|cacto~255          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~0            ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~1            ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~2            ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~3            ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~4            ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~5            ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~6            ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~7            ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~8            ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~9            ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~10           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~11           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~12           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~13           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~14           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~15           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~16           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~17           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~18           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~19           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~20           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~21           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~22           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~23           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~24           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~25           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~26           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~27           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~28           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~29           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~30           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~31           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~32           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~33           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~34           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~35           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~36           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~37           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~38           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~39           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~40           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~41           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~42           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~43           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~44           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~45           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~46           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~47           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~48           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~49           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~50           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~51           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~52           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~53           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~54           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~55           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~56           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~57           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~58           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~59           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~60           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~61           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~62           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~63           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~64           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~65           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~66           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~67           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~68           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~69           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~70           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~71           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~72           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~73           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~74           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~75           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~76           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~77           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~78           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~79           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~80           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~81           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~82           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~83           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~84           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~85           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~86           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~87           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~88           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~89           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~90           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~91           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~92           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~93           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~94           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~95           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~96           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~97           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~98           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~99           ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~100          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~101          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~102          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~103          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~104          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~105          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~106          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~107          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~108          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~109          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~110          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~111          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~112          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~113          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~114          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~115          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~116          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~117          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~118          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~119          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~120          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~121          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~122          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~123          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~124          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~125          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~126          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~127          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~128          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~129          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~130          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~131          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~132          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~133          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~134          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~135          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~136          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~137          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~138          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~139          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~140          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~141          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~142          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~143          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~144          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~145          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~146          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~147          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~148          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~149          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~150          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~151          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~152          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~153          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~154          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~155          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~156          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~157          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~158          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~159          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~160          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~161          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~162          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~163          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~164          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~165          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~166          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~167          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~168          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~169          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~170          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~171          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~172          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~173          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~174          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~175          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~176          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~177          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~178          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~179          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~180          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~181          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~182          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~183          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~184          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~185          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~186          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~187          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~188          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~189          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~190          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~191          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~192          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~193          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~194          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~195          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~196          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~197          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~198          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~199          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~200          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~201          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~202          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~203          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~204          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~205          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~206          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~207          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~208          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~209          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~210          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~211          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~212          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~213          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~214          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~215          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~216          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~217          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~218          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~219          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~220          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~221          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~222          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~223          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~224          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~225          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~226          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~227          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~228          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~229          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~230          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~231          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~232          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~233          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~234          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~235          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~236          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~237          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~238          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~239          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~240          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~241          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~242          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~243          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~244          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~245          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~246          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~247          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~248          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~249          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~250          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~251          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~252          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~253          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~254          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|nuvem~255          ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~0                ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~1                ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~2                ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~3                ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~4                ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~5                ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~6                ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~7                ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~8                ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~9                ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~10               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~11               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~12               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~13               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~14               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~15               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~16               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~17               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~18               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~19               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~20               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~21               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~22               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~23               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~24               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~25               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~26               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~27               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~28               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~29               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~30               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~31               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~32               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~33               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~34               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~35               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~36               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~37               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~38               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~39               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~40               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~41               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~42               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~43               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~44               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~45               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~46               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~47               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~48               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~49               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~50               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~51               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~52               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~53               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~54               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~55               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~56               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~57               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~58               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~59               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~60               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~61               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~62               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~63               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~64               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~65               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~66               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~67               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~68               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~69               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~70               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~71               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~72               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~73               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~74               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~75               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~76               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~77               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~78               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~79               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~80               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~81               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~82               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~83               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~84               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~85               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~86               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~87               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~88               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~89               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~90               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~91               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~92               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~93               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~94               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~95               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~96               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~97               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~98               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~99               ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~100              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~101              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~102              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~103              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~104              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~105              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~106              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~107              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~108              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~109              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~110              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~111              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~112              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~113              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~114              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~115              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~116              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~117              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~118              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~119              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~120              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~121              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~122              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~123              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~124              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~125              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~126              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~127              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~128              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~129              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~130              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~131              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~132              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~133              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~134              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~135              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~136              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~137              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~138              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~139              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~140              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~141              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~142              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~143              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~144              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~145              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~146              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~147              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~148              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~149              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~150              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~151              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~152              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~153              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~154              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~155              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~156              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~157              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~158              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~159              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~160              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~161              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~162              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~163              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~164              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~165              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~166              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~167              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~168              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~169              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~170              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~171              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~172              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~173              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~174              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~175              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~176              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~177              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~178              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~179              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~180              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~181              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~182              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~183              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~184              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~185              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~186              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~187              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~188              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~189              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~190              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~191              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~192              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~193              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~194              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~195              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~196              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~197              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~198              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~199              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~200              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~201              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~202              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~203              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~204              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~205              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~206              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~207              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~208              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~209              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~210              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~211              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~212              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~213              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~214              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~215              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~216              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~217              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~218              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~219              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~220              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~221              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~222              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~223              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~224              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~225              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~226              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~227              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~228              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~229              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~230              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~231              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~232              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~233              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~234              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~235              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~236              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~237              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~238              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~239              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~240              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~241              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~242              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~243              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~244              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~245              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~246              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~247              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~248              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~249              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~250              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~251              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~252              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~253              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~254              ; Stuck at GND due to stuck port clock   ;
+; tex_sprite_with_line11:inst1|e~255              ; Stuck at GND due to stuck port clock   ;
+; Total Number of Removed Registers = 771         ;                                        ;
++-------------------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 248   ;
+; Number of registers using Synchronous Clear  ; 79    ;
+; Number of registers using Synchronous Load   ; 12    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 178   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------------+
+; Inverted Register Statistics                             ;
++------------------------------------------------+---------+
+; Inverted Register                              ; Fan out ;
++------------------------------------------------+---------+
+; tex_sprite_with_line11:inst1|cactoXBegin[4]    ; 3       ;
+; tex_sprite_with_line11:inst1|cactoXBegin[7]    ; 4       ;
+; tex_sprite_with_line11:inst1|cactoXBegin[5]    ; 4       ;
+; tex_sprite_with_line11:inst1|cactoXBegin[2]    ; 4       ;
+; tex_sprite_with_line11:inst1|cactoXBegin[3]    ; 4       ;
+; tex_sprite_with_line11:inst1|cactoXBegin[9]    ; 4       ;
+; tex_sprite_with_line11:inst1|cactoXEnd[9]      ; 4       ;
+; tex_sprite_with_line11:inst1|cactoXEnd[7]      ; 5       ;
+; tex_sprite_with_line11:inst1|cactoXEnd[6]      ; 5       ;
+; tex_sprite_with_line11:inst1|cactoXEnd[3]      ; 4       ;
+; tex_sprite_with_line11:inst1|cactoXEnd[2]      ; 4       ;
+; tex_sprite_with_line11:inst1|listra1XEnd[1]    ; 3       ;
+; tex_sprite_with_line11:inst1|listra1XEnd[9]    ; 4       ;
+; tex_sprite_with_line11:inst1|listra1XEnd[8]    ; 4       ;
+; tex_sprite_with_line11:inst1|listra1XBegin[7]  ; 3       ;
+; tex_sprite_with_line11:inst1|listra1XBegin[5]  ; 3       ;
+; tex_sprite_with_line11:inst1|listra1XBegin[3]  ; 3       ;
+; tex_sprite_with_line11:inst1|listra1XBegin[9]  ; 3       ;
+; tex_sprite_with_line11:inst1|listra2XEnd[9]    ; 2       ;
+; tex_sprite_with_line11:inst1|listra2XEnd[8]    ; 2       ;
+; tex_sprite_with_line11:inst1|listra2XEnd[4]    ; 2       ;
+; tex_sprite_with_line11:inst1|listra2XEnd[6]    ; 3       ;
+; tex_sprite_with_line11:inst1|listra2XEnd[3]    ; 2       ;
+; tex_sprite_with_line11:inst1|listra2XEnd[2]    ; 2       ;
+; tex_sprite_with_line11:inst1|listra2XEnd[0]    ; 2       ;
+; tex_sprite_with_line11:inst1|listra2XBegin[1]  ; 3       ;
+; tex_sprite_with_line11:inst1|listra2XBegin[0]  ; 3       ;
+; tex_sprite_with_line11:inst1|listra2XBegin[9]  ; 4       ;
+; tex_sprite_with_line11:inst1|listra2XBegin[8]  ; 4       ;
+; tex_sprite_with_line11:inst1|rexYend[8]        ; 6       ;
+; tex_sprite_with_line11:inst1|rexYBegin[4]      ; 4       ;
+; tex_sprite_with_line11:inst1|rexYBegin[7]      ; 5       ;
+; tex_sprite_with_line11:inst1|rexYBegin[6]      ; 5       ;
+; tex_sprite_with_line11:inst1|rexYBegin[5]      ; 5       ;
+; tex_sprite_with_line11:inst1|nuvem2XBegin[5]   ; 3       ;
+; tex_sprite_with_line11:inst1|nuvem2XBegin[8]   ; 3       ;
+; tex_sprite_with_line11:inst1|nuvem2XBegin[9]   ; 3       ;
+; tex_sprite_with_line11:inst1|nuvem2XEnd[9]     ; 3       ;
+; tex_sprite_with_line11:inst1|nuvem2XEnd[8]     ; 3       ;
+; tex_sprite_with_line11:inst1|nuvem2XEnd[4]     ; 3       ;
+; tex_sprite_with_line11:inst1|nuvem2XEnd[5]     ; 4       ;
+; tex_sprite_with_line11:inst1|nuvemXBegin[1]    ; 3       ;
+; tex_sprite_with_line11:inst1|nuvemXBegin[7]    ; 3       ;
+; tex_sprite_with_line11:inst1|nuvemXBegin[4]    ; 3       ;
+; tex_sprite_with_line11:inst1|nuvemXBegin[5]    ; 3       ;
+; tex_sprite_with_line11:inst1|nuvemXBegin[9]    ; 3       ;
+; tex_sprite_with_line11:inst1|nuvemXEnd[1]      ; 3       ;
+; tex_sprite_with_line11:inst1|nuvemXEnd[7]      ; 4       ;
+; tex_sprite_with_line11:inst1|nuvemXEnd[6]      ; 4       ;
+; tex_sprite_with_line11:inst1|nuvemXEnd[9]      ; 4       ;
+; tex_sprite_with_line11:inst1|cacto2XBegin[4]   ; 3       ;
+; tex_sprite_with_line11:inst1|cacto2XBegin[7]   ; 4       ;
+; tex_sprite_with_line11:inst1|cacto2XBegin[6]   ; 4       ;
+; tex_sprite_with_line11:inst1|cacto2XBegin[2]   ; 4       ;
+; tex_sprite_with_line11:inst1|cacto2XBegin[8]   ; 4       ;
+; tex_sprite_with_line11:inst1|cacto2XBegin[9]   ; 4       ;
+; tex_sprite_with_line11:inst1|cacto2XEnd[9]     ; 4       ;
+; tex_sprite_with_line11:inst1|cacto2XEnd[8]     ; 4       ;
+; tex_sprite_with_line11:inst1|cacto2XEnd[7]     ; 5       ;
+; tex_sprite_with_line11:inst1|cacto2XEnd[6]     ; 5       ;
+; tex_sprite_with_line11:inst1|cacto2XEnd[5]     ; 5       ;
+; tex_sprite_with_line11:inst1|cacto2XEnd[2]     ; 4       ;
+; tex_sprite_with_line11:inst1|deslocamento[3]   ; 2       ;
+; tex_sprite_with_line11:inst1|deslocamento[6]   ; 2       ;
+; tex_sprite_with_line11:inst1|deslocamento[11]  ; 2       ;
+; tex_sprite_with_line11:inst1|deslocamento[13]  ; 2       ;
+; tex_sprite_with_line11:inst1|deslocamento[14]  ; 3       ;
+; tex_sprite_with_line11:inst1|deslocamento[15]  ; 3       ;
+; tex_sprite_with_line11:inst1|deslocamento[16]  ; 3       ;
+; tex_sprite_with_line11:inst1|velocidadeReg[3]  ; 3       ;
+; tex_sprite_with_line11:inst1|velocidadeReg[6]  ; 3       ;
+; tex_sprite_with_line11:inst1|velocidadeReg[11] ; 3       ;
+; tex_sprite_with_line11:inst1|velocidadeReg[13] ; 3       ;
+; tex_sprite_with_line11:inst1|velocidadeReg[14] ; 3       ;
+; tex_sprite_with_line11:inst1|velocidadeReg[15] ; 3       ;
+; tex_sprite_with_line11:inst1|velocidadeReg[16] ; 3       ;
+; tex_sprite_with_line11:inst1|velocidade[2]     ; 3       ;
+; tex_sprite_with_line11:inst1|velocidade[5]     ; 3       ;
+; tex_sprite_with_line11:inst1|velocidade[6]     ; 3       ;
+; Total number of inverted registers = 79        ;         ;
++------------------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |rex_game|VGA_SYNC:inst|v_count[7]                       ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |rex_game|tex_sprite_with_line11:inst1|rexYend[9]        ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 0 LEs                ; 22 LEs                 ; Yes        ; |rex_game|tex_sprite_with_line11:inst1|velocidadeReg[2]  ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |rex_game|tex_sprite_with_line11:inst1|listra1XBegin[4]  ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |rex_game|tex_sprite_with_line11:inst1|listra1XEnd[7]    ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |rex_game|tex_sprite_with_line11:inst1|deslocamento[0]   ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 0 LEs                ; 22 LEs                 ; Yes        ; |rex_game|tex_sprite_with_line11:inst1|deslocamento[18]  ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |rex_game|tex_sprite_with_line11:inst1|listra2XEnd[1]    ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |rex_game|tex_sprite_with_line11:inst1|listra2XBegin[5]  ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |rex_game|tex_sprite_with_line11:inst1|nuvemXEnd[5]      ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |rex_game|tex_sprite_with_line11:inst1|nuvem2XEnd[1]     ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |rex_game|tex_sprite_with_line11:inst1|nuvem2XEnd[6]     ;
+; 5:1                ; 17 bits   ; 51 LEs        ; 0 LEs                ; 51 LEs                 ; Yes        ; |rex_game|tex_sprite_with_line11:inst1|velocidade[7]     ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |rex_game|tex_sprite_with_line11:inst1|rexYend[8]        ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |rex_game|tex_sprite_with_line11:inst1|velocidadeReg[15] ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |rex_game|tex_sprite_with_line11:inst1|listra1XBegin[9]  ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |rex_game|tex_sprite_with_line11:inst1|deslocamento[13]  ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |rex_game|tex_sprite_with_line11:inst1|listra2XBegin[0]  ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; Yes        ; |rex_game|tex_sprite_with_line11:inst1|nuvemXBegin[4]    ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |rex_game|tex_sprite_with_line11:inst1|nuvem2XEnd[4]     ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; Yes        ; |rex_game|tex_sprite_with_line11:inst1|velocidade[5]     ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |rex_game|tex_sprite_with_line11:inst1|cactoXEnd         ;
+; 4:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |rex_game|tex_sprite_with_line11:inst1|cactoXBegin       ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |rex_game|tex_sprite_with_line11:inst1|cacto2XBegin      ;
+; 4:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |rex_game|tex_sprite_with_line11:inst1|cacto2XBegin      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: VGA_SYNC:inst|video_PLL:video_PLL_inst|altpll:altpll_component ;
++-------------------------------+-------------------+---------------------------------------------------------+
+; Parameter Name                ; Value             ; Type                                                    ;
++-------------------------------+-------------------+---------------------------------------------------------+
+; OPERATION_MODE                ; NORMAL            ; Untyped                                                 ;
+; PLL_TYPE                      ; FAST              ; Untyped                                                 ;
+; LPM_HINT                      ; UNUSED            ; Untyped                                                 ;
+; QUALIFY_CONF_DONE             ; OFF               ; Untyped                                                 ;
+; COMPENSATE_CLOCK              ; CLK0              ; Untyped                                                 ;
+; SCAN_CHAIN                    ; LONG              ; Untyped                                                 ;
+; PRIMARY_CLOCK                 ; INCLK0            ; Untyped                                                 ;
+; INCLK0_INPUT_FREQUENCY        ; 20000             ; Signed Integer                                          ;
+; INCLK1_INPUT_FREQUENCY        ; 0                 ; Untyped                                                 ;
+; GATE_LOCK_SIGNAL              ; NO                ; Untyped                                                 ;
+; GATE_LOCK_COUNTER             ; 0                 ; Untyped                                                 ;
+; LOCK_HIGH                     ; 1                 ; Untyped                                                 ;
+; LOCK_LOW                      ; 1                 ; Untyped                                                 ;
+; VALID_LOCK_MULTIPLIER         ; 1                 ; Untyped                                                 ;
+; INVALID_LOCK_MULTIPLIER       ; 5                 ; Untyped                                                 ;
+; SWITCH_OVER_ON_LOSSCLK        ; OFF               ; Untyped                                                 ;
+; SWITCH_OVER_ON_GATED_LOCK     ; OFF               ; Untyped                                                 ;
+; ENABLE_SWITCH_OVER_COUNTER    ; OFF               ; Untyped                                                 ;
+; SKIP_VCO                      ; OFF               ; Untyped                                                 ;
+; SWITCH_OVER_COUNTER           ; 0                 ; Untyped                                                 ;
+; SWITCH_OVER_TYPE              ; AUTO              ; Untyped                                                 ;
+; FEEDBACK_SOURCE               ; EXTCLK0           ; Untyped                                                 ;
+; BANDWIDTH                     ; 0                 ; Untyped                                                 ;
+; BANDWIDTH_TYPE                ; AUTO              ; Untyped                                                 ;
+; SPREAD_FREQUENCY              ; 0                 ; Untyped                                                 ;
+; DOWN_SPREAD                   ; 0                 ; Untyped                                                 ;
+; SELF_RESET_ON_GATED_LOSS_LOCK ; OFF               ; Untyped                                                 ;
+; SELF_RESET_ON_LOSS_LOCK       ; OFF               ; Untyped                                                 ;
+; CLK9_MULTIPLY_BY              ; 0                 ; Untyped                                                 ;
+; CLK8_MULTIPLY_BY              ; 0                 ; Untyped                                                 ;
+; CLK7_MULTIPLY_BY              ; 0                 ; Untyped                                                 ;
+; CLK6_MULTIPLY_BY              ; 0                 ; Untyped                                                 ;
+; CLK5_MULTIPLY_BY              ; 1                 ; Untyped                                                 ;
+; CLK4_MULTIPLY_BY              ; 1                 ; Untyped                                                 ;
+; CLK3_MULTIPLY_BY              ; 1                 ; Untyped                                                 ;
+; CLK2_MULTIPLY_BY              ; 1                 ; Untyped                                                 ;
+; CLK1_MULTIPLY_BY              ; 1                 ; Untyped                                                 ;
+; CLK0_MULTIPLY_BY              ; 1                 ; Signed Integer                                          ;
+; CLK9_DIVIDE_BY                ; 0                 ; Untyped                                                 ;
+; CLK8_DIVIDE_BY                ; 0                 ; Untyped                                                 ;
+; CLK7_DIVIDE_BY                ; 0                 ; Untyped                                                 ;
+; CLK6_DIVIDE_BY                ; 0                 ; Untyped                                                 ;
+; CLK5_DIVIDE_BY                ; 1                 ; Untyped                                                 ;
+; CLK4_DIVIDE_BY                ; 1                 ; Untyped                                                 ;
+; CLK3_DIVIDE_BY                ; 1                 ; Untyped                                                 ;
+; CLK2_DIVIDE_BY                ; 1                 ; Untyped                                                 ;
+; CLK1_DIVIDE_BY                ; 1                 ; Untyped                                                 ;
+; CLK0_DIVIDE_BY                ; 2                 ; Signed Integer                                          ;
+; CLK9_PHASE_SHIFT              ; 0                 ; Untyped                                                 ;
+; CLK8_PHASE_SHIFT              ; 0                 ; Untyped                                                 ;
+; CLK7_PHASE_SHIFT              ; 0                 ; Untyped                                                 ;
+; CLK6_PHASE_SHIFT              ; 0                 ; Untyped                                                 ;
+; CLK5_PHASE_SHIFT              ; 0                 ; Untyped                                                 ;
+; CLK4_PHASE_SHIFT              ; 0                 ; Untyped                                                 ;
+; CLK3_PHASE_SHIFT              ; 0                 ; Untyped                                                 ;
+; CLK2_PHASE_SHIFT              ; 0                 ; Untyped                                                 ;
+; CLK1_PHASE_SHIFT              ; 0                 ; Untyped                                                 ;
+; CLK0_PHASE_SHIFT              ; 0                 ; Untyped                                                 ;
+; CLK5_TIME_DELAY               ; 0                 ; Untyped                                                 ;
+; CLK4_TIME_DELAY               ; 0                 ; Untyped                                                 ;
+; CLK3_TIME_DELAY               ; 0                 ; Untyped                                                 ;
+; CLK2_TIME_DELAY               ; 0                 ; Untyped                                                 ;
+; CLK1_TIME_DELAY               ; 0                 ; Untyped                                                 ;
+; CLK0_TIME_DELAY               ; 0                 ; Untyped                                                 ;
+; CLK9_DUTY_CYCLE               ; 50                ; Untyped                                                 ;
+; CLK8_DUTY_CYCLE               ; 50                ; Untyped                                                 ;
+; CLK7_DUTY_CYCLE               ; 50                ; Untyped                                                 ;
+; CLK6_DUTY_CYCLE               ; 50                ; Untyped                                                 ;
+; CLK5_DUTY_CYCLE               ; 50                ; Untyped                                                 ;
+; CLK4_DUTY_CYCLE               ; 50                ; Untyped                                                 ;
+; CLK3_DUTY_CYCLE               ; 50                ; Untyped                                                 ;
+; CLK2_DUTY_CYCLE               ; 50                ; Untyped                                                 ;
+; CLK1_DUTY_CYCLE               ; 50                ; Untyped                                                 ;
+; CLK0_DUTY_CYCLE               ; 50                ; Signed Integer                                          ;
+; CLK9_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                                                 ;
+; CLK8_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                                                 ;
+; CLK7_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                                                 ;
+; CLK6_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                                                 ;
+; CLK5_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                                                 ;
+; CLK4_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                                                 ;
+; CLK3_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                                                 ;
+; CLK2_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                                                 ;
+; CLK1_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                                                 ;
+; CLK0_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                                                 ;
+; CLK9_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                                                 ;
+; CLK8_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                                                 ;
+; CLK7_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                                                 ;
+; CLK6_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                                                 ;
+; CLK5_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                                                 ;
+; CLK4_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                                                 ;
+; CLK3_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                                                 ;
+; CLK2_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                                                 ;
+; CLK1_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                                                 ;
+; CLK0_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                                                 ;
+; LOCK_WINDOW_UI                ;  0.05             ; Untyped                                                 ;
+; LOCK_WINDOW_UI_BITS           ; UNUSED            ; Untyped                                                 ;
+; VCO_RANGE_DETECTOR_LOW_BITS   ; UNUSED            ; Untyped                                                 ;
+; VCO_RANGE_DETECTOR_HIGH_BITS  ; UNUSED            ; Untyped                                                 ;
+; DPA_MULTIPLY_BY               ; 0                 ; Untyped                                                 ;
+; DPA_DIVIDE_BY                 ; 1                 ; Untyped                                                 ;
+; DPA_DIVIDER                   ; 0                 ; Untyped                                                 ;
+; EXTCLK3_MULTIPLY_BY           ; 1                 ; Untyped                                                 ;
+; EXTCLK2_MULTIPLY_BY           ; 1                 ; Untyped                                                 ;
+; EXTCLK1_MULTIPLY_BY           ; 1                 ; Untyped                                                 ;
+; EXTCLK0_MULTIPLY_BY           ; 1                 ; Untyped                                                 ;
+; EXTCLK3_DIVIDE_BY             ; 1                 ; Untyped                                                 ;
+; EXTCLK2_DIVIDE_BY             ; 1                 ; Untyped                                                 ;
+; EXTCLK1_DIVIDE_BY             ; 1                 ; Untyped                                                 ;
+; EXTCLK0_DIVIDE_BY             ; 1                 ; Untyped                                                 ;
+; EXTCLK3_PHASE_SHIFT           ; 0                 ; Untyped                                                 ;
+; EXTCLK2_PHASE_SHIFT           ; 0                 ; Untyped                                                 ;
+; EXTCLK1_PHASE_SHIFT           ; 0                 ; Untyped                                                 ;
+; EXTCLK0_PHASE_SHIFT           ; 0                 ; Untyped                                                 ;
+; EXTCLK3_TIME_DELAY            ; 0                 ; Untyped                                                 ;
+; EXTCLK2_TIME_DELAY            ; 0                 ; Untyped                                                 ;
+; EXTCLK1_TIME_DELAY            ; 0                 ; Untyped                                                 ;
+; EXTCLK0_TIME_DELAY            ; 0                 ; Untyped                                                 ;
+; EXTCLK3_DUTY_CYCLE            ; 50                ; Untyped                                                 ;
+; EXTCLK2_DUTY_CYCLE            ; 50                ; Untyped                                                 ;
+; EXTCLK1_DUTY_CYCLE            ; 50                ; Untyped                                                 ;
+; EXTCLK0_DUTY_CYCLE            ; 50                ; Untyped                                                 ;
+; VCO_MULTIPLY_BY               ; 0                 ; Untyped                                                 ;
+; VCO_DIVIDE_BY                 ; 0                 ; Untyped                                                 ;
+; SCLKOUT0_PHASE_SHIFT          ; 0                 ; Untyped                                                 ;
+; SCLKOUT1_PHASE_SHIFT          ; 0                 ; Untyped                                                 ;
+; VCO_MIN                       ; 0                 ; Untyped                                                 ;
+; VCO_MAX                       ; 0                 ; Untyped                                                 ;
+; VCO_CENTER                    ; 0                 ; Untyped                                                 ;
+; PFD_MIN                       ; 0                 ; Untyped                                                 ;
+; PFD_MAX                       ; 0                 ; Untyped                                                 ;
+; M_INITIAL                     ; 0                 ; Untyped                                                 ;
+; M                             ; 0                 ; Untyped                                                 ;
+; N                             ; 1                 ; Untyped                                                 ;
+; M2                            ; 1                 ; Untyped                                                 ;
+; N2                            ; 1                 ; Untyped                                                 ;
+; SS                            ; 1                 ; Untyped                                                 ;
+; C0_HIGH                       ; 0                 ; Untyped                                                 ;
+; C1_HIGH                       ; 0                 ; Untyped                                                 ;
+; C2_HIGH                       ; 0                 ; Untyped                                                 ;
+; C3_HIGH                       ; 0                 ; Untyped                                                 ;
+; C4_HIGH                       ; 0                 ; Untyped                                                 ;
+; C5_HIGH                       ; 0                 ; Untyped                                                 ;
+; C6_HIGH                       ; 0                 ; Untyped                                                 ;
+; C7_HIGH                       ; 0                 ; Untyped                                                 ;
+; C8_HIGH                       ; 0                 ; Untyped                                                 ;
+; C9_HIGH                       ; 0                 ; Untyped                                                 ;
+; C0_LOW                        ; 0                 ; Untyped                                                 ;
+; C1_LOW                        ; 0                 ; Untyped                                                 ;
+; C2_LOW                        ; 0                 ; Untyped                                                 ;
+; C3_LOW                        ; 0                 ; Untyped                                                 ;
+; C4_LOW                        ; 0                 ; Untyped                                                 ;
+; C5_LOW                        ; 0                 ; Untyped                                                 ;
+; C6_LOW                        ; 0                 ; Untyped                                                 ;
+; C7_LOW                        ; 0                 ; Untyped                                                 ;
+; C8_LOW                        ; 0                 ; Untyped                                                 ;
+; C9_LOW                        ; 0                 ; Untyped                                                 ;
+; C0_INITIAL                    ; 0                 ; Untyped                                                 ;
+; C1_INITIAL                    ; 0                 ; Untyped                                                 ;
+; C2_INITIAL                    ; 0                 ; Untyped                                                 ;
+; C3_INITIAL                    ; 0                 ; Untyped                                                 ;
+; C4_INITIAL                    ; 0                 ; Untyped                                                 ;
+; C5_INITIAL                    ; 0                 ; Untyped                                                 ;
+; C6_INITIAL                    ; 0                 ; Untyped                                                 ;
+; C7_INITIAL                    ; 0                 ; Untyped                                                 ;
+; C8_INITIAL                    ; 0                 ; Untyped                                                 ;
+; C9_INITIAL                    ; 0                 ; Untyped                                                 ;
+; C0_MODE                       ; BYPASS            ; Untyped                                                 ;
+; C1_MODE                       ; BYPASS            ; Untyped                                                 ;
+; C2_MODE                       ; BYPASS            ; Untyped                                                 ;
+; C3_MODE                       ; BYPASS            ; Untyped                                                 ;
+; C4_MODE                       ; BYPASS            ; Untyped                                                 ;
+; C5_MODE                       ; BYPASS            ; Untyped                                                 ;
+; C6_MODE                       ; BYPASS            ; Untyped                                                 ;
+; C7_MODE                       ; BYPASS            ; Untyped                                                 ;
+; C8_MODE                       ; BYPASS            ; Untyped                                                 ;
+; C9_MODE                       ; BYPASS            ; Untyped                                                 ;
+; C0_PH                         ; 0                 ; Untyped                                                 ;
+; C1_PH                         ; 0                 ; Untyped                                                 ;
+; C2_PH                         ; 0                 ; Untyped                                                 ;
+; C3_PH                         ; 0                 ; Untyped                                                 ;
+; C4_PH                         ; 0                 ; Untyped                                                 ;
+; C5_PH                         ; 0                 ; Untyped                                                 ;
+; C6_PH                         ; 0                 ; Untyped                                                 ;
+; C7_PH                         ; 0                 ; Untyped                                                 ;
+; C8_PH                         ; 0                 ; Untyped                                                 ;
+; C9_PH                         ; 0                 ; Untyped                                                 ;
+; L0_HIGH                       ; 1                 ; Untyped                                                 ;
+; L1_HIGH                       ; 1                 ; Untyped                                                 ;
+; G0_HIGH                       ; 1                 ; Untyped                                                 ;
+; G1_HIGH                       ; 1                 ; Untyped                                                 ;
+; G2_HIGH                       ; 1                 ; Untyped                                                 ;
+; G3_HIGH                       ; 1                 ; Untyped                                                 ;
+; E0_HIGH                       ; 1                 ; Untyped                                                 ;
+; E1_HIGH                       ; 1                 ; Untyped                                                 ;
+; E2_HIGH                       ; 1                 ; Untyped                                                 ;
+; E3_HIGH                       ; 1                 ; Untyped                                                 ;
+; L0_LOW                        ; 1                 ; Untyped                                                 ;
+; L1_LOW                        ; 1                 ; Untyped                                                 ;
+; G0_LOW                        ; 1                 ; Untyped                                                 ;
+; G1_LOW                        ; 1                 ; Untyped                                                 ;
+; G2_LOW                        ; 1                 ; Untyped                                                 ;
+; G3_LOW                        ; 1                 ; Untyped                                                 ;
+; E0_LOW                        ; 1                 ; Untyped                                                 ;
+; E1_LOW                        ; 1                 ; Untyped                                                 ;
+; E2_LOW                        ; 1                 ; Untyped                                                 ;
+; E3_LOW                        ; 1                 ; Untyped                                                 ;
+; L0_INITIAL                    ; 1                 ; Untyped                                                 ;
+; L1_INITIAL                    ; 1                 ; Untyped                                                 ;
+; G0_INITIAL                    ; 1                 ; Untyped                                                 ;
+; G1_INITIAL                    ; 1                 ; Untyped                                                 ;
+; G2_INITIAL                    ; 1                 ; Untyped                                                 ;
+; G3_INITIAL                    ; 1                 ; Untyped                                                 ;
+; E0_INITIAL                    ; 1                 ; Untyped                                                 ;
+; E1_INITIAL                    ; 1                 ; Untyped                                                 ;
+; E2_INITIAL                    ; 1                 ; Untyped                                                 ;
+; E3_INITIAL                    ; 1                 ; Untyped                                                 ;
+; L0_MODE                       ; BYPASS            ; Untyped                                                 ;
+; L1_MODE                       ; BYPASS            ; Untyped                                                 ;
+; G0_MODE                       ; BYPASS            ; Untyped                                                 ;
+; G1_MODE                       ; BYPASS            ; Untyped                                                 ;
+; G2_MODE                       ; BYPASS            ; Untyped                                                 ;
+; G3_MODE                       ; BYPASS            ; Untyped                                                 ;
+; E0_MODE                       ; BYPASS            ; Untyped                                                 ;
+; E1_MODE                       ; BYPASS            ; Untyped                                                 ;
+; E2_MODE                       ; BYPASS            ; Untyped                                                 ;
+; E3_MODE                       ; BYPASS            ; Untyped                                                 ;
+; L0_PH                         ; 0                 ; Untyped                                                 ;
+; L1_PH                         ; 0                 ; Untyped                                                 ;
+; G0_PH                         ; 0                 ; Untyped                                                 ;
+; G1_PH                         ; 0                 ; Untyped                                                 ;
+; G2_PH                         ; 0                 ; Untyped                                                 ;
+; G3_PH                         ; 0                 ; Untyped                                                 ;
+; E0_PH                         ; 0                 ; Untyped                                                 ;
+; E1_PH                         ; 0                 ; Untyped                                                 ;
+; E2_PH                         ; 0                 ; Untyped                                                 ;
+; E3_PH                         ; 0                 ; Untyped                                                 ;
+; M_PH                          ; 0                 ; Untyped                                                 ;
+; C1_USE_CASC_IN                ; OFF               ; Untyped                                                 ;
+; C2_USE_CASC_IN                ; OFF               ; Untyped                                                 ;
+; C3_USE_CASC_IN                ; OFF               ; Untyped                                                 ;
+; C4_USE_CASC_IN                ; OFF               ; Untyped                                                 ;
+; C5_USE_CASC_IN                ; OFF               ; Untyped                                                 ;
+; C6_USE_CASC_IN                ; OFF               ; Untyped                                                 ;
+; C7_USE_CASC_IN                ; OFF               ; Untyped                                                 ;
+; C8_USE_CASC_IN                ; OFF               ; Untyped                                                 ;
+; C9_USE_CASC_IN                ; OFF               ; Untyped                                                 ;
+; CLK0_COUNTER                  ; G0                ; Untyped                                                 ;
+; CLK1_COUNTER                  ; G0                ; Untyped                                                 ;
+; CLK2_COUNTER                  ; G0                ; Untyped                                                 ;
+; CLK3_COUNTER                  ; G0                ; Untyped                                                 ;
+; CLK4_COUNTER                  ; G0                ; Untyped                                                 ;
+; CLK5_COUNTER                  ; G0                ; Untyped                                                 ;
+; CLK6_COUNTER                  ; E0                ; Untyped                                                 ;
+; CLK7_COUNTER                  ; E1                ; Untyped                                                 ;
+; CLK8_COUNTER                  ; E2                ; Untyped                                                 ;
+; CLK9_COUNTER                  ; E3                ; Untyped                                                 ;
+; L0_TIME_DELAY                 ; 0                 ; Untyped                                                 ;
+; L1_TIME_DELAY                 ; 0                 ; Untyped                                                 ;
+; G0_TIME_DELAY                 ; 0                 ; Untyped                                                 ;
+; G1_TIME_DELAY                 ; 0                 ; Untyped                                                 ;
+; G2_TIME_DELAY                 ; 0                 ; Untyped                                                 ;
+; G3_TIME_DELAY                 ; 0                 ; Untyped                                                 ;
+; E0_TIME_DELAY                 ; 0                 ; Untyped                                                 ;
+; E1_TIME_DELAY                 ; 0                 ; Untyped                                                 ;
+; E2_TIME_DELAY                 ; 0                 ; Untyped                                                 ;
+; E3_TIME_DELAY                 ; 0                 ; Untyped                                                 ;
+; M_TIME_DELAY                  ; 0                 ; Untyped                                                 ;
+; N_TIME_DELAY                  ; 0                 ; Untyped                                                 ;
+; EXTCLK3_COUNTER               ; E3                ; Untyped                                                 ;
+; EXTCLK2_COUNTER               ; E2                ; Untyped                                                 ;
+; EXTCLK1_COUNTER               ; E1                ; Untyped                                                 ;
+; EXTCLK0_COUNTER               ; E0                ; Untyped                                                 ;
+; ENABLE0_COUNTER               ; L0                ; Untyped                                                 ;
+; ENABLE1_COUNTER               ; L0                ; Untyped                                                 ;
+; CHARGE_PUMP_CURRENT           ; 2                 ; Untyped                                                 ;
+; LOOP_FILTER_R                 ;  1.000000         ; Untyped                                                 ;
+; LOOP_FILTER_C                 ; 5                 ; Untyped                                                 ;
+; CHARGE_PUMP_CURRENT_BITS      ; 9999              ; Untyped                                                 ;
+; LOOP_FILTER_R_BITS            ; 9999              ; Untyped                                                 ;
+; LOOP_FILTER_C_BITS            ; 9999              ; Untyped                                                 ;
+; VCO_POST_SCALE                ; 0                 ; Untyped                                                 ;
+; CLK2_OUTPUT_FREQUENCY         ; 0                 ; Untyped                                                 ;
+; CLK1_OUTPUT_FREQUENCY         ; 0                 ; Untyped                                                 ;
+; CLK0_OUTPUT_FREQUENCY         ; 0                 ; Untyped                                                 ;
+; INTENDED_DEVICE_FAMILY        ; Cyclone II        ; Untyped                                                 ;
+; PORT_CLKENA0                  ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_CLKENA1                  ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_CLKENA2                  ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_CLKENA3                  ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_CLKENA4                  ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_CLKENA5                  ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_EXTCLKENA0               ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_EXTCLKENA1               ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_EXTCLKENA2               ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_EXTCLKENA3               ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_EXTCLK0                  ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_EXTCLK1                  ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_EXTCLK2                  ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_EXTCLK3                  ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_CLKBAD0                  ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_CLKBAD1                  ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_CLK0                     ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_CLK1                     ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_CLK2                     ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_CLK3                     ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_CLK4                     ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_CLK5                     ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_CLK6                     ; PORT_UNUSED       ; Untyped                                                 ;
+; PORT_CLK7                     ; PORT_UNUSED       ; Untyped                                                 ;
+; PORT_CLK8                     ; PORT_UNUSED       ; Untyped                                                 ;
+; PORT_CLK9                     ; PORT_UNUSED       ; Untyped                                                 ;
+; PORT_SCANDATA                 ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_SCANDATAOUT              ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_SCANDONE                 ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_SCLKOUT1                 ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_SCLKOUT0                 ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_ACTIVECLOCK              ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_CLKLOSS                  ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_INCLK1                   ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_INCLK0                   ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_FBIN                     ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_PLLENA                   ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_CLKSWITCH                ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_ARESET                   ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_PFDENA                   ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_SCANCLK                  ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_SCANACLR                 ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_SCANREAD                 ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_SCANWRITE                ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_ENABLE0                  ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_ENABLE1                  ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_LOCKED                   ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_CONFIGUPDATE             ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_FBOUT                    ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_PHASEDONE                ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_PHASESTEP                ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_PHASEUPDOWN              ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_SCANCLKENA               ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_PHASECOUNTERSELECT       ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_VCOOVERRANGE             ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; PORT_VCOUNDERRANGE            ; PORT_CONNECTIVITY ; Untyped                                                 ;
+; M_TEST_SOURCE                 ; 5                 ; Untyped                                                 ;
+; C0_TEST_SOURCE                ; 5                 ; Untyped                                                 ;
+; C1_TEST_SOURCE                ; 5                 ; Untyped                                                 ;
+; C2_TEST_SOURCE                ; 5                 ; Untyped                                                 ;
+; C3_TEST_SOURCE                ; 5                 ; Untyped                                                 ;
+; C4_TEST_SOURCE                ; 5                 ; Untyped                                                 ;
+; C5_TEST_SOURCE                ; 5                 ; Untyped                                                 ;
+; C6_TEST_SOURCE                ; 5                 ; Untyped                                                 ;
+; C7_TEST_SOURCE                ; 5                 ; Untyped                                                 ;
+; C8_TEST_SOURCE                ; 5                 ; Untyped                                                 ;
+; C9_TEST_SOURCE                ; 5                 ; Untyped                                                 ;
+; CBXI_PARAMETER                ; altpll_80u        ; Untyped                                                 ;
+; VCO_FREQUENCY_CONTROL         ; AUTO              ; Untyped                                                 ;
+; VCO_PHASE_SHIFT_STEP          ; 0                 ; Untyped                                                 ;
+; WIDTH_CLOCK                   ; 6                 ; Untyped                                                 ;
+; WIDTH_PHASECOUNTERSELECT      ; 4                 ; Untyped                                                 ;
+; USING_FBMIMICBIDIR_PORT       ; OFF               ; Untyped                                                 ;
+; DEVICE_FAMILY                 ; Cyclone V         ; Untyped                                                 ;
+; SCAN_CHAIN_MIF_FILE           ; UNUSED            ; Untyped                                                 ;
+; SIM_GATE_LOCK_DEVICE_BEHAVIOR ; OFF               ; Untyped                                                 ;
+; AUTO_CARRY_CHAINS             ; ON                ; AUTO_CARRY                                              ;
+; IGNORE_CARRY_BUFFERS          ; OFF               ; IGNORE_CARRY                                            ;
+; AUTO_CASCADE_CHAINS           ; ON                ; AUTO_CASCADE                                            ;
+; IGNORE_CASCADE_BUFFERS        ; OFF               ; IGNORE_CASCADE                                          ;
++-------------------------------+-------------------+---------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: tex_sprite_with_line11:inst1 ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; rexXBegin      ; 40    ; Signed Integer                                   ;
+; rexXend        ; 56    ; Signed Integer                                   ;
+; cactoYBegin    ; 236   ; Signed Integer                                   ;
+; cactoYEnd      ; 252   ; Signed Integer                                   ;
+; cacto2YBegin   ; 236   ; Signed Integer                                   ;
+; cacto2YEnd     ; 252   ; Signed Integer                                   ;
+; nuvemYBegin    ; 196   ; Signed Integer                                   ;
+; nuvemYEnd      ; 212   ; Signed Integer                                   ;
+; nuvem2YBegin   ; 196   ; Signed Integer                                   ;
+; nuvem2YEnd     ; 212   ; Signed Integer                                   ;
+; chaoXBegin     ; 0     ; Signed Integer                                   ;
+; chaoXEnd       ; 640   ; Signed Integer                                   ;
+; chaoYBegin     ; 240   ; Signed Integer                                   ;
+; chaoYEnd       ; 242   ; Signed Integer                                   ;
+; listra1YBegin  ; 254   ; Signed Integer                                   ;
+; listra1YEnd    ; 256   ; Signed Integer                                   ;
+; listra2YBegin  ; 247   ; Signed Integer                                   ;
+; listra2YEnd    ; 249   ; Signed Integer                                   ;
+; gXBegin        ; 248   ; Signed Integer                                   ;
+; gXEnd          ; 264   ; Signed Integer                                   ;
+; gYBegin        ; 100   ; Signed Integer                                   ;
+; gYEnd          ; 116   ; Signed Integer                                   ;
+; aXBegin        ; 264   ; Signed Integer                                   ;
+; aXEnd          ; 280   ; Signed Integer                                   ;
+; aYBegin        ; 100   ; Signed Integer                                   ;
+; aYEnd          ; 116   ; Signed Integer                                   ;
+; mXBegin        ; 280   ; Signed Integer                                   ;
+; mXEnd          ; 296   ; Signed Integer                                   ;
+; mYBegin        ; 100   ; Signed Integer                                   ;
+; mYEnd          ; 116   ; Signed Integer                                   ;
+; eXBegin        ; 296   ; Signed Integer                                   ;
+; eXEnd          ; 312   ; Signed Integer                                   ;
+; eYBegin        ; 100   ; Signed Integer                                   ;
+; eYEnd          ; 116   ; Signed Integer                                   ;
+; oXBegin        ; 328   ; Signed Integer                                   ;
+; oXEnd          ; 344   ; Signed Integer                                   ;
+; oYBegin        ; 100   ; Signed Integer                                   ;
+; oYEnd          ; 116   ; Signed Integer                                   ;
+; vXBegin        ; 344   ; Signed Integer                                   ;
+; vXEnd          ; 360   ; Signed Integer                                   ;
+; vYBegin        ; 100   ; Signed Integer                                   ;
+; vYEnd          ; 116   ; Signed Integer                                   ;
+; e2XBegin       ; 360   ; Signed Integer                                   ;
+; e2XEnd         ; 376   ; Signed Integer                                   ;
+; e2YBegin       ; 100   ; Signed Integer                                   ;
+; e2YEnd         ; 116   ; Signed Integer                                   ;
+; rXBegin        ; 376   ; Signed Integer                                   ;
+; rXEnd          ; 392   ; Signed Integer                                   ;
+; rYBegin        ; 100   ; Signed Integer                                   ;
+; rYEnd          ; 116   ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------+
+; altpll Parameter Settings by Entity Instance                                                   ;
++-------------------------------+----------------------------------------------------------------+
+; Name                          ; Value                                                          ;
++-------------------------------+----------------------------------------------------------------+
+; Number of entity instances    ; 1                                                              ;
+; Entity Instance               ; VGA_SYNC:inst|video_PLL:video_PLL_inst|altpll:altpll_component ;
+;     -- OPERATION_MODE         ; NORMAL                                                         ;
+;     -- PLL_TYPE               ; FAST                                                           ;
+;     -- PRIMARY_CLOCK          ; INCLK0                                                         ;
+;     -- INCLK0_INPUT_FREQUENCY ; 20000                                                          ;
+;     -- INCLK1_INPUT_FREQUENCY ; 0                                                              ;
+;     -- VCO_MULTIPLY_BY        ; 0                                                              ;
+;     -- VCO_DIVIDE_BY          ; 0                                                              ;
++-------------------------------+----------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 248                         ;
+;     ENA               ; 109                         ;
+;     ENA SCLR          ; 58                          ;
+;     ENA SCLR SLD      ; 11                          ;
+;     SCLR              ; 10                          ;
+;     SLD               ; 1                           ;
+;     plain             ; 59                          ;
+; arriav_lcell_comb     ; 762                         ;
+;     arith             ; 262                         ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 218                         ;
+;         2 data inputs ; 3                           ;
+;         3 data inputs ; 13                          ;
+;         4 data inputs ; 20                          ;
+;         5 data inputs ; 6                           ;
+;     extend            ; 1                           ;
+;         7 data inputs ; 1                           ;
+;     normal            ; 474                         ;
+;         2 data inputs ; 99                          ;
+;         3 data inputs ; 34                          ;
+;         4 data inputs ; 108                         ;
+;         5 data inputs ; 89                          ;
+;         6 data inputs ; 144                         ;
+;     shared            ; 25                          ;
+;         0 data inputs ; 1                           ;
+;         2 data inputs ; 4                           ;
+;         3 data inputs ; 20                          ;
+; boundary_port         ; 9                           ;
+; generic_pll           ; 1                           ;
+;                       ;                             ;
+; Max LUT depth         ; 9.00                        ;
+; Average LUT depth     ; 4.80                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+    Info: Processing started: Fri Feb 28 14:44:56 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off rex_game -c rex_game
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Warning (12019): Can't analyze file -- file trex_control.v is missing
+Info (12021): Found 1 design units, including 1 entities, in source file button.v
+    Info (12023): Found entity 1: trex_control File: C:/Users/Usuario/Desktop/rex_game/button.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file rex_game.bdf
+    Info (12023): Found entity 1: rex_game
+Info (12021): Found 1 design units, including 1 entities, in source file trex_sprite_with_line11.v
+    Info (12023): Found entity 1: tex_sprite_with_line11 File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 1
+Info (12127): Elaborating entity "rex_game" for the top level hierarchy
+Warning (12125): Using design file vga_sync.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info (12022): Found design unit 1: VGA_SYNC-a File: C:/Users/Usuario/Desktop/rex_game/vga_sync.vhd Line: 13
+    Info (12023): Found entity 1: VGA_SYNC File: C:/Users/Usuario/Desktop/rex_game/vga_sync.vhd Line: 7
+Info (12128): Elaborating entity "VGA_SYNC" for hierarchy "VGA_SYNC:inst"
+Warning (12125): Using design file video_pll.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info (12022): Found design unit 1: video_pll-SYN File: C:/Users/Usuario/Desktop/rex_game/video_pll.vhd Line: 48
+    Info (12023): Found entity 1: video_PLL File: C:/Users/Usuario/Desktop/rex_game/video_pll.vhd Line: 39
+Info (12128): Elaborating entity "video_PLL" for hierarchy "VGA_SYNC:inst|video_PLL:video_PLL_inst" File: C:/Users/Usuario/Desktop/rex_game/vga_sync.vhd Line: 45
+Info (12128): Elaborating entity "altpll" for hierarchy "VGA_SYNC:inst|video_PLL:video_PLL_inst|altpll:altpll_component" File: C:/Users/Usuario/Desktop/rex_game/video_pll.vhd Line: 86
+Info (12130): Elaborated megafunction instantiation "VGA_SYNC:inst|video_PLL:video_PLL_inst|altpll:altpll_component" File: C:/Users/Usuario/Desktop/rex_game/video_pll.vhd Line: 86
+Info (12133): Instantiated megafunction "VGA_SYNC:inst|video_PLL:video_PLL_inst|altpll:altpll_component" with the following parameter: File: C:/Users/Usuario/Desktop/rex_game/video_pll.vhd Line: 86
+    Info (12134): Parameter "clk0_duty_cycle" = "50"
+    Info (12134): Parameter "lpm_type" = "altpll"
+    Info (12134): Parameter "clk0_multiply_by" = "1"
+    Info (12134): Parameter "inclk0_input_frequency" = "20000"
+    Info (12134): Parameter "clk0_divide_by" = "2"
+    Info (12134): Parameter "pll_type" = "FAST"
+    Info (12134): Parameter "intended_device_family" = "Cyclone II"
+    Info (12134): Parameter "operation_mode" = "NORMAL"
+    Info (12134): Parameter "compensate_clock" = "CLK0"
+    Info (12134): Parameter "clk0_phase_shift" = "0"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altpll_80u.tdf
+    Info (12023): Found entity 1: altpll_80u File: C:/Users/Usuario/Desktop/rex_game/db/altpll_80u.tdf Line: 26
+Info (12128): Elaborating entity "altpll_80u" for hierarchy "VGA_SYNC:inst|video_PLL:video_PLL_inst|altpll:altpll_component|altpll_80u:auto_generated" File: c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altpll.tdf Line: 898
+Info (12128): Elaborating entity "tex_sprite_with_line11" for hierarchy "tex_sprite_with_line11:inst1"
+Warning (10230): Verilog HDL assignment warning at trex_sprite_with_line11.v(295): truncated value with size 32 to match size of target (10) File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 295
+Warning (10230): Verilog HDL assignment warning at trex_sprite_with_line11.v(296): truncated value with size 32 to match size of target (10) File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 296
+Warning (10230): Verilog HDL assignment warning at trex_sprite_with_line11.v(326): truncated value with size 32 to match size of target (20) File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 326
+Warning (10230): Verilog HDL assignment warning at trex_sprite_with_line11.v(330): truncated value with size 32 to match size of target (10) File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 330
+Warning (10230): Verilog HDL assignment warning at trex_sprite_with_line11.v(331): truncated value with size 32 to match size of target (10) File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 331
+Warning (10230): Verilog HDL assignment warning at trex_sprite_with_line11.v(339): truncated value with size 32 to match size of target (10) File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 339
+Warning (10230): Verilog HDL assignment warning at trex_sprite_with_line11.v(340): truncated value with size 32 to match size of target (10) File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 340
+Warning (10230): Verilog HDL assignment warning at trex_sprite_with_line11.v(349): truncated value with size 32 to match size of target (10) File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 349
+Warning (10230): Verilog HDL assignment warning at trex_sprite_with_line11.v(350): truncated value with size 32 to match size of target (10) File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 350
+Warning (10230): Verilog HDL assignment warning at trex_sprite_with_line11.v(358): truncated value with size 32 to match size of target (10) File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 358
+Warning (10230): Verilog HDL assignment warning at trex_sprite_with_line11.v(359): truncated value with size 32 to match size of target (10) File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 359
+Warning (10230): Verilog HDL assignment warning at trex_sprite_with_line11.v(368): truncated value with size 32 to match size of target (10) File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 368
+Warning (10230): Verilog HDL assignment warning at trex_sprite_with_line11.v(369): truncated value with size 32 to match size of target (10) File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 369
+Warning (10230): Verilog HDL assignment warning at trex_sprite_with_line11.v(377): truncated value with size 32 to match size of target (10) File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 377
+Warning (10230): Verilog HDL assignment warning at trex_sprite_with_line11.v(378): truncated value with size 32 to match size of target (10) File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 378
+Warning (10230): Verilog HDL assignment warning at trex_sprite_with_line11.v(388): truncated value with size 32 to match size of target (20) File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 388
+Warning (10230): Verilog HDL assignment warning at trex_sprite_with_line11.v(392): truncated value with size 32 to match size of target (20) File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 392
+Warning (10030): Net "rex.waddr_a" at trex_sprite_with_line11.v(33) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 33
+Warning (10030): Net "cacto.waddr_a" at trex_sprite_with_line11.v(34) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 34
+Warning (10030): Net "nuvem.waddr_a" at trex_sprite_with_line11.v(35) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 35
+Warning (10030): Net "g.waddr_a" at trex_sprite_with_line11.v(37) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 37
+Warning (10030): Net "a.waddr_a" at trex_sprite_with_line11.v(38) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 38
+Warning (10030): Net "m.waddr_a" at trex_sprite_with_line11.v(39) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 39
+Warning (10030): Net "e.waddr_a" at trex_sprite_with_line11.v(40) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 40
+Warning (10030): Net "o.waddr_a" at trex_sprite_with_line11.v(41) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 41
+Warning (10030): Net "v.waddr_a" at trex_sprite_with_line11.v(42) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 42
+Warning (10030): Net "r.waddr_a" at trex_sprite_with_line11.v(43) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 43
+Warning (10030): Net "rex.data_a" at trex_sprite_with_line11.v(33) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 33
+Warning (10030): Net "rex.we_a" at trex_sprite_with_line11.v(33) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 33
+Warning (10030): Net "cacto.data_a" at trex_sprite_with_line11.v(34) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 34
+Warning (10030): Net "cacto.we_a" at trex_sprite_with_line11.v(34) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 34
+Warning (10030): Net "nuvem.data_a" at trex_sprite_with_line11.v(35) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 35
+Warning (10030): Net "nuvem.we_a" at trex_sprite_with_line11.v(35) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 35
+Warning (10030): Net "g.data_a" at trex_sprite_with_line11.v(37) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 37
+Warning (10030): Net "g.we_a" at trex_sprite_with_line11.v(37) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 37
+Warning (10030): Net "a.data_a" at trex_sprite_with_line11.v(38) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 38
+Warning (10030): Net "a.we_a" at trex_sprite_with_line11.v(38) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 38
+Warning (10030): Net "m.data_a" at trex_sprite_with_line11.v(39) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 39
+Warning (10030): Net "m.we_a" at trex_sprite_with_line11.v(39) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 39
+Warning (10030): Net "e.data_a" at trex_sprite_with_line11.v(40) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 40
+Warning (10030): Net "e.we_a" at trex_sprite_with_line11.v(40) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 40
+Warning (10030): Net "o.data_a" at trex_sprite_with_line11.v(41) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 41
+Warning (10030): Net "o.we_a" at trex_sprite_with_line11.v(41) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 41
+Warning (10030): Net "v.data_a" at trex_sprite_with_line11.v(42) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 42
+Warning (10030): Net "v.we_a" at trex_sprite_with_line11.v(42) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 42
+Warning (10030): Net "r.data_a" at trex_sprite_with_line11.v(43) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 43
+Warning (10030): Net "r.we_a" at trex_sprite_with_line11.v(43) has no driver or initial value, using a default initial value '0' File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 43
+Info (276014): Found 10 instances of uninferred RAM logic
+    Info (276007): RAM logic "tex_sprite_with_line11:inst1|rex" is uninferred due to asynchronous read logic File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 33
+    Info (276007): RAM logic "tex_sprite_with_line11:inst1|cacto" is uninferred due to asynchronous read logic File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 34
+    Info (276007): RAM logic "tex_sprite_with_line11:inst1|nuvem" is uninferred due to asynchronous read logic File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 35
+    Info (276007): RAM logic "tex_sprite_with_line11:inst1|g" is uninferred due to asynchronous read logic File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 37
+    Info (276007): RAM logic "tex_sprite_with_line11:inst1|a" is uninferred due to asynchronous read logic File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 38
+    Info (276007): RAM logic "tex_sprite_with_line11:inst1|m" is uninferred due to asynchronous read logic File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 39
+    Info (276007): RAM logic "tex_sprite_with_line11:inst1|e" is uninferred due to asynchronous read logic File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 40
+    Info (276007): RAM logic "tex_sprite_with_line11:inst1|o" is uninferred due to asynchronous read logic File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 41
+    Info (276007): RAM logic "tex_sprite_with_line11:inst1|v" is uninferred due to asynchronous read logic File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 42
+    Info (276007): RAM logic "tex_sprite_with_line11:inst1|r" is uninferred due to asynchronous read logic File: C:/Users/Usuario/Desktop/rex_game/trex_sprite_with_line11.v Line: 43
+Info (286030): Timing-Driven Synthesis is running
+Warning (20013): Ignored 24 assignments for entity "my_first_fpga" -- entity does not exist in design
+    Warning (20014): Assignment for entity set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_PRESERVE_HIGH_SPEED_TILES ON -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IGNORE_SOURCE_FILE_CHANGES OFF -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ALWAYS_USE_QXP_NETLIST OFF -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_COLOR 16764057 -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_ASSIGNMENTS ON -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_ASSIGNMENTS REPLACE_CONFLICTING -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_LOGICLOCK_REGIONS UPDATE_CONFLICTING -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_PIN_ASSIGNMENTS ON -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_PROMOTE_ASSIGNMENTS ON -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_TYPE STANDARD_PARTITION -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name ALLOW_MULTIPLE_PERSONAS OFF -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ASD_REGION_ID 1 -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name CROSS_BOUNDARY_OPTIMIZATIONS OFF -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PROPAGATE_CONSTANTS_ON_INPUTS ON -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PROPAGATE_INVERSIONS_ON_INPUTS ON -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name REMOVE_LOGIC_ON_UNCONNECTED_OUTPUTS ON -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name MERGE_EQUIVALENT_INPUTS ON -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name MERGE_EQUIVALENT_BIDIRS ON -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name ABSORB_PATHS_FROM_OUTPUTS_TO_INPUTS ON -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_EXTRACT_HARD_BLOCK_NODES ON -entity my_first_fpga -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ENABLE_STRICT_PRESERVATION OFF -entity my_first_fpga -section_id Top was ignored
+Info (144001): Generated suppressed messages file C:/Users/Usuario/Desktop/rex_game/output_files/rex_game.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
+Warning: RST port on the PLL is not properly connected on instance VGA_SYNC:inst|video_PLL:video_PLL_inst|altpll:altpll_component|altpll_80u:auto_generated|generic_pll1. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: C:/Users/Usuario/Desktop/rex_game/db/altpll_80u.tdf Line: 34
+    Info: Must be connected
+Info (21057): Implemented 819 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 3 input pins
+    Info (21059): Implemented 6 output pins
+    Info (21061): Implemented 809 logic cells
+    Info (21065): Implemented 1 PLLs
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 77 warnings
+    Info: Peak virtual memory: 4924 megabytes
+    Info: Processing ended: Fri Feb 28 14:45:06 2025
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:21
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/Usuario/Desktop/rex_game/output_files/rex_game.map.smsg.
+
+
